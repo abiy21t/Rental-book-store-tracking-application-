@@ -1,0 +1,2 @@
+C:\Users\Nik\AppData\Local\Temporary Projects\Final\bin\Debug\Final.exe.config
+C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\bin\Debug\Final.exe.config
