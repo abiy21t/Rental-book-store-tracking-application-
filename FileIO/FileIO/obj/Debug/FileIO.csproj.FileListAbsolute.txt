@@ -1,0 +1,17 @@
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\bin\Debug\FileIO.exe.config
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\bin\Debug\FileIO.mdf
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\bin\Debug\FileIO_log.ldf
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\bin\Debug\FileIO.exe
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\bin\Debug\FileIO.pdb
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO.csprojResolveAssemblyReference.cache
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\MainWindow.g.cs
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\App.g.cs
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO_Content.g.cs
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO_MarkupCompile.cache
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO_MarkupCompile.lref
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\MainWindow.baml
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO.g.resources
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO.Properties.Resources.resources
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO.csproj.GenerateResource.Cache
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO.exe
+C:\Users\Elhanan\Desktop\IO_Ass\FileIO\FileIO\obj\Debug\FileIO.pdb

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileIO", "FileIO\FileIO.csproj", "{04892442-C396-43C0-AC4B-AE44A2C21ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISBN", "..\..\..\Documents\Visual Studio 2015\Projects\ISBN\ISBN\ISBN.csproj", "{A93B304D-5D8B-4855-96BE-F1B269C11889}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04892442-C396-43C0-AC4B-AE44A2C21ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04892442-C396-43C0-AC4B-AE44A2C21ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04892442-C396-43C0-AC4B-AE44A2C21ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04892442-C396-43C0-AC4B-AE44A2C21ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A93B304D-5D8B-4855-96BE-F1B269C11889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93B304D-5D8B-4855-96BE-F1B269C11889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93B304D-5D8B-4855-96BE-F1B269C11889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93B304D-5D8B-4855-96BE-F1B269C11889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
