@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\obj\Debug\
+C:\Users\Elhanan\Desktop\FinalProject\Final\Final\obj\Debug\
 Final
 none
 false
 DEBUG;TRACE
-C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\App.xaml
-11151548125
+C:\Users\Elhanan\Desktop\FinalProject\Final\Final\App.xaml
+6-1460359195
 2-1643917336
-131375698699
+201446508886
 13738642453
-MainWindow.xaml;
+addAdminPage.xaml;AddBooksPage.xaml;AddNewAdmin.xaml;AdminHome.xaml;LoginnPage.xaml;MainWindow.xaml;
 
 False
 

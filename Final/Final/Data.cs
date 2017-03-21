@@ -8,9 +8,9 @@ namespace Final
 {
     class Data
     {
-        public void addUser(User)
+        /*public void addUser(User)
         {
 
-        }
+        }*/
     }
 }

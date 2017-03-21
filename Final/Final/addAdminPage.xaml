@@ -1,0 +1,29 @@
+﻿<Page x:Class="Final.Admin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Final"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="450
+      "
+      Title="Admin">
+
+    <Grid>
+        <Label x:Name="label" Content="Add New Admin" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="204" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="label1" Content="First Name" HorizontalAlignment="Left" Margin="36,87,0,0" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
+        <TextBox x:Name="adminlname" HorizontalAlignment="Left" Height="23" Margin="134,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" AutomationProperties.AccessKey="2"/>
+        <TextBox x:Name="adminuname" HorizontalAlignment="Left" Height="23" Margin="134,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" AutomationProperties.AccessKey="3"/>
+        <TextBox x:Name="adminphone" HorizontalAlignment="Left" Height="23" Margin="134,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" AutomationProperties.AccessKey="6"/>
+        <TextBox x:Name="adminemail" HorizontalAlignment="Left" Height="23" Margin="134,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" AutomationProperties.AccessKey="5"/>
+        <TextBox x:Name="adminfname" HorizontalAlignment="Left" Height="23" Margin="134,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" AutomationProperties.AccessKey="1"/>
+        <Label x:Name="label1_Copy" Content="Last Name" HorizontalAlignment="Left" Margin="36,140,0,0" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
+        <Label x:Name="label1_Copy1" Content="User Name" HorizontalAlignment="Left" Margin="36,187,0,0" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
+        <Label x:Name="label1_Copy2" Content="Password" HorizontalAlignment="Left" Margin="36,236,0,0" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
+        <Label x:Name="label1_Copy3" Content="E-mail " HorizontalAlignment="Left" Margin="53,274,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
+        <Label x:Name="label1_Copy4" Content="Phone" HorizontalAlignment="Left" Margin="52,327,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
+        <Button x:Name="create" Content="Create" HorizontalAlignment="Left" Margin="93,372,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="13" Click="create_Click"/>
+        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" Margin="209,372,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="13" Click="clear_Click"/>
+        <PasswordBox x:Name="AdminPassword" HorizontalAlignment="Left" Margin="134,223,0,0" VerticalAlignment="Top" Width="163" Height="31"/>
+    </Grid>
+</Page>

@@ -70,10 +70,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBooksPage.xaml.cs">
+      <DependentUpon>AddBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewAdmin.xaml.cs">
+      <DependentUpon>AddNewAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin.cs" />
+    <Compile Include="AdminHome.xaml.cs">
+      <DependentUpon>AdminHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="addAdminPage.xaml.cs">
+      <DependentUpon>addAdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Book.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="LoginnPage.xaml.cs">
+      <DependentUpon>LoginnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPclass.cs" />
     <Compile Include="User.cs" />
+    <Page Include="addAdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddBooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddNewAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginnPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

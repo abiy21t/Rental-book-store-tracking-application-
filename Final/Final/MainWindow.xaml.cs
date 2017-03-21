@@ -25,9 +25,12 @@ namespace Final
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+       
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            LoginnPage lg = new LoginnPage();
+            lg.Show();
+            this.Hide();
         }
     }
 }
