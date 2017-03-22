@@ -17,14 +17,14 @@ namespace Final
     /// <summary>
     /// Interaction logic for LoginnPage.xaml
     /// </summary>
-    public partial class LoginnPage : Window
+    public partial class LoginPage : Window
     {
-        public LoginnPage()
+        public LoginPage()
         {
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)//login button
         {
             LoginPclass log = new LoginPclass();
             if (radAdmin.IsChecked == true)
@@ -36,19 +36,26 @@ namespace Final
                 {
                     AdminHome adh = new AdminHome();
                     adh.Show();
-                    this.Hide();
+                    this.Close();
                     //MessageBox.Show("user name and password correct");
                 }
                 else
                 {
-                    MessageBox.Show("user name and password incorrect");
+                    MessageBox.Show("Username or Password incorrect.");
                 }
             }
-            if (radClerk.IsChecked == true)
+            if (radUser.IsChecked == true)
             {
                 log.UserName = txtuname.Text;
                 log.Password = passwordBox.Password;
             }
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)//create new user button
+        {
+            CreateUser cu = new CreateUser();
+            cu.Show();
+            this.Close();
         }
     }
 }

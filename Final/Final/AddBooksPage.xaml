@@ -5,24 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final"
         mc:Ignorable="d"
-        Title="AddBooksPage" Height="501.064" Width="598.936">
+        Title="Add Book" Height="485" Width="560">
     <Grid>
-        <Label x:Name="label" Content="Books Registration Form" HorizontalAlignment="Left" Height="38" Margin="101,48,0,0" VerticalAlignment="Top" Width="376" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="label1" Content="               Title" HorizontalAlignment="Left" Margin="74,99,0,0" VerticalAlignment="Top" Width="132" Height="29"/>
-        <Label x:Name="label1_Copy1" Content="           Author" HorizontalAlignment="Left" Margin="74,134,0,0" VerticalAlignment="Top" Width="132" Height="33"/>
-        <Label x:Name="label1_Copy2" Content="           Edition" HorizontalAlignment="Left" Margin="74,190,0,0" VerticalAlignment="Top" Width="132" Height="33"/>
-        <Label x:Name="label1_Copy3" Content="              Price" HorizontalAlignment="Left" Margin="74,244,0,0" VerticalAlignment="Top" Width="132" Height="33"/>
-        <Label x:Name="label1_Copy4" Content="               ISBN" HorizontalAlignment="Left" Margin="73,287,0,0" VerticalAlignment="Top" Width="133" Height="33"/>
-        <TextBox x:Name="txttitle" HorizontalAlignment="Left" Height="29" Margin="234,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <TextBox x:Name="txtcoverimage" HorizontalAlignment="Left" Height="29" Margin="234,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <TextBox x:Name="txtauthor" HorizontalAlignment="Left" Height="29" Margin="234,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <TextBox x:Name="txtedition" HorizontalAlignment="Left" Height="29" Margin="234,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <TextBox x:Name="txtprice" HorizontalAlignment="Left" Height="29" Margin="234,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <TextBox x:Name="txtisbn" HorizontalAlignment="Left" Height="29" Margin="234,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <Label x:Name="label2" Content="Cover Image" HorizontalAlignment="Left" Margin="87,347,0,0" VerticalAlignment="Top" Width="119" Height="32"/>
-        <Button x:Name="button" Content="Save" HorizontalAlignment="Left" Margin="207,398,0,0" VerticalAlignment="Top" Width="116" Click="button_Click" Height="25"/>
-        <Button x:Name="button1" Content="Clear" HorizontalAlignment="Left" Margin="344,398,0,0" VerticalAlignment="Top" Width="105" Height="25"/>
-        <Button x:Name="button2" Content="Back to Admin Home" HorizontalAlignment="Left" Margin="410,10,0,0" VerticalAlignment="Top" Width="151" Click="button2_Click"/>
+        <Label x:Name="label" Content="Books Registration Form" HorizontalAlignment="Left" Height="38" Margin="92,27,0,0" VerticalAlignment="Top" Width="376" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Height="29" Margin="225,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="txtCoverimage" HorizontalAlignment="Left" Height="29" Margin="225,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Height="29" Margin="225,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="txtEdition" HorizontalAlignment="Left" Height="29" Margin="225,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="29" Margin="225,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="txtIsbn" HorizontalAlignment="Left" Height="29" Margin="225,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <Button x:Name="button_register" Content="Register Book" HorizontalAlignment="Left" Margin="325,343,0,0" VerticalAlignment="Top" Width="116" Click="button_Click" Height="25"/>
+        <Button x:Name="button_clear" Content="Clear Form" HorizontalAlignment="Left" Margin="184,343,0,0" VerticalAlignment="Top" Width="105" Height="25" Click="button1_Click"/>
+        <Button x:Name="button_back" Content="Back to Admin Home" HorizontalAlignment="Left" Margin="22,405,0,0" VerticalAlignment="Top" Width="151" Click="button2_Click" Height="25"/>
+        <Label x:Name="label3" Content="Title:" HorizontalAlignment="Left" Margin="162,78,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Author:" HorizontalAlignment="Left" Margin="160,117,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="Edition:" HorizontalAlignment="Left" Margin="160,162,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="Price:" HorizontalAlignment="Left" Margin="171,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label6" Content="ISBN-10:" HorizontalAlignment="Left" Margin="153,248,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label7" Content="Cover Image:" HorizontalAlignment="Left" Margin="140,292,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

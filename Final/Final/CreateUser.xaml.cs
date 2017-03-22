@@ -10,27 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Final
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreateUser.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateUser : Window
     {
-        public MainWindow()
+        public CreateUser()
         {
             InitializeComponent();
         }
 
-       
-        private void button1_Click(object sender, RoutedEventArgs e)//login button
+        private void button_Click(object sender, RoutedEventArgs e)//cancel button
         {
-            LoginPage lg = new LoginPage();
-            lg.Show();
+            LoginPage lp = new LoginPage();
+            lp.Show();
             this.Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)//create button
+        {
+
         }
     }
 }
