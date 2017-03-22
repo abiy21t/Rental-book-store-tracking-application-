@@ -51,7 +51,7 @@ namespace Final {
         
         #line 11 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label label1;
+        internal System.Windows.Controls.TextBox txtuname;
         
         #line default
         #line hidden
@@ -59,7 +59,7 @@ namespace Final {
         
         #line 12 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label label2;
+        internal System.Windows.Controls.Button button_login;
         
         #line default
         #line hidden
@@ -67,7 +67,7 @@ namespace Final {
         
         #line 13 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox txtuname;
+        internal System.Windows.Controls.RadioButton radAdmin;
         
         #line default
         #line hidden
@@ -75,7 +75,7 @@ namespace Final {
         
         #line 14 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button button;
+        internal System.Windows.Controls.RadioButton radUser;
         
         #line default
         #line hidden
@@ -83,7 +83,7 @@ namespace Final {
         
         #line 15 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.RadioButton radAdmin;
+        internal System.Windows.Controls.PasswordBox passwordBox;
         
         #line default
         #line hidden
@@ -91,7 +91,7 @@ namespace Final {
         
         #line 16 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.RadioButton radClerk;
+        internal System.Windows.Controls.Label label1;
         
         #line default
         #line hidden
@@ -99,7 +99,23 @@ namespace Final {
         
         #line 17 "..\..\LoginnPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.PasswordBox passwordBox;
+        internal System.Windows.Controls.Label label2;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 18 "..\..\LoginnPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label label3;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 19 "..\..\LoginnPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button button;
         
         #line default
         #line hidden
@@ -138,31 +154,37 @@ namespace Final {
             this.label = ((System.Windows.Controls.Label)(target));
             return;
             case 2:
-            this.label1 = ((System.Windows.Controls.Label)(target));
-            return;
-            case 3:
-            this.label2 = ((System.Windows.Controls.Label)(target));
-            return;
-            case 4:
             this.txtuname = ((System.Windows.Controls.TextBox)(target));
             return;
-            case 5:
-            this.button = ((System.Windows.Controls.Button)(target));
+            case 3:
+            this.button_login = ((System.Windows.Controls.Button)(target));
             
-            #line 14 "..\..\LoginnPage.xaml"
-            this.button.Click += new System.Windows.RoutedEventHandler(this.button_Click);
+            #line 12 "..\..\LoginnPage.xaml"
+            this.button_login.Click += new System.Windows.RoutedEventHandler(this.button_Click);
             
             #line default
             #line hidden
             return;
-            case 6:
+            case 4:
             this.radAdmin = ((System.Windows.Controls.RadioButton)(target));
             return;
+            case 5:
+            this.radUser = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 6:
+            this.passwordBox = ((System.Windows.Controls.PasswordBox)(target));
+            return;
             case 7:
-            this.radClerk = ((System.Windows.Controls.RadioButton)(target));
+            this.label1 = ((System.Windows.Controls.Label)(target));
             return;
             case 8:
-            this.passwordBox = ((System.Windows.Controls.PasswordBox)(target));
+            this.label2 = ((System.Windows.Controls.Label)(target));
+            return;
+            case 9:
+            this.label3 = ((System.Windows.Controls.Label)(target));
+            return;
+            case 10:
+            this.button = ((System.Windows.Controls.Button)(target));
             return;
             }
             this._contentLoaded = true;

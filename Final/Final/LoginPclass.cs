@@ -45,7 +45,7 @@ namespace Final
         public bool AdminLogin(string username, string password)
         {
             
-            if (ConnectionState.Closed == conn.con.State)
+            if (ConnectionState.Closed == conn.con.State)//this needs to be a try catch
             {
                 conn.con.Open();
             }

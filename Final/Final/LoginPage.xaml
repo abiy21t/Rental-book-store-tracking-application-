@@ -1,0 +1,22 @@
+﻿<Window x:Class="Final.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Final"
+        mc:Ignorable="d"
+        Title="LoginPage" Height="390" Width="480">
+    <Grid Margin="0,0,2,-1">
+        <Label x:Name="label" Content="Login" HorizontalAlignment="Left" Height="41" Margin="199,33,0,0" VerticalAlignment="Top" Width="55" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtuname" HorizontalAlignment="Left" Height="25" Margin="150,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"/>
+        <Button x:Name="button_login" Content="Login" HorizontalAlignment="Left" Height="30" Margin="199,210,0,0" VerticalAlignment="Top" Width="117" Click="button_Click"/>
+        <RadioButton x:Name="radAdmin" Content="Admin" HorizontalAlignment="Left" Margin="344,133,0,0" VerticalAlignment="Top" Width="83" Height="21"/>
+        <RadioButton x:Name="radUser" Content="User" HorizontalAlignment="Left" Height="21" Margin="344,159,0,0" VerticalAlignment="Top" Width="83" IsChecked="True"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="150,169,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
+        <Label x:Name="label1" Content="Username:" HorizontalAlignment="Left" Margin="79,127,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Password:" HorizontalAlignment="Left" Margin="83,169,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="New User?" HorizontalAlignment="Left" Margin="333,283,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Create Account" HorizontalAlignment="Left" Margin="323,309,0,0" VerticalAlignment="Top" Width="91" Height="25" Click="button_Click_1"/>
+
+    </Grid>
+</Window>

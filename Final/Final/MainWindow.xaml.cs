@@ -26,11 +26,11 @@ namespace Final
         }
 
        
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e)//login button
         {
-            LoginnPage lg = new LoginnPage();
+            LoginPage lg = new LoginPage();
             lg.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final"
         mc:Ignorable="d"
-        Title="OpeningWindow" Height="544.61" Width="774.468">
+        Title="BookStore" Height="390" Width="480">
     <Grid>
-        <Button x:Name="button1" Content="Login" HorizontalAlignment="Left" Margin="530,66,0,0" VerticalAlignment="Top" Width="137" Height="39" Click="button1_Click" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="button1" Content="Login" HorizontalAlignment="Left" Margin="170,137,0,0" VerticalAlignment="Top" Width="137" Height="39" Click="button1_Click" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="label" Content="Welcome to our Bookstore!" HorizontalAlignment="Left" Margin="80,28,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label x:Name="label1" Content="App created by Abiy Belew and Nik Jones" HorizontalAlignment="Left" Margin="131,78,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
