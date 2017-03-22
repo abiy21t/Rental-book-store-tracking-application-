@@ -76,8 +76,19 @@ namespace Final
             }
             set
             {
-
-                _ISBN = value;
+                if (value=="")
+                {
+                    MessageBox.Show("ISBN required!");
+                }
+                bool isbnchecker = ISBN_Cheker(value);
+                if (isbnchecker==true)
+                {
+                    _ISBN = value;
+                }
+                else
+                {
+                    MessageBox.Show("You enterd invalid ISBN please enter 10 digit valid one");
+                }
             }
         }
         public string CoverImage
@@ -126,10 +137,68 @@ namespace Final
                 MessageBox.Show("error" + ex);
             }
         }
-        public bool ISBN_Cheker()
+        public bool ISBN_Cheker(string isbn)
         {
+            
+            char[] Use_input_parsed_to_char = isbn.ToCharArray();
+            Console.WriteLine("\n");
+            char[] ISBN_number;
+            ISBN_number = new char[10];
 
-            return true;
+            char letter;
+            for (int j = 0; j < isbn.Length; j++)
+            {
+                letter = Use_input_parsed_to_char[j];
+
+                ISBN_number[j] = letter;
+            }
+
+            int Multiplier = 10;
+            int sum = 0;
+            int mod;
+            int subst;
+            int parsed_number1 = 0;
+            for (int i = 0; i < ISBN_number.Length; i++)
+            {
+                if (Multiplier == 1)
+                {
+                    break;
+                }
+
+                int parsed_number = (int)Char.GetNumericValue(ISBN_number[i]);
+
+
+                sum = sum + parsed_number * Multiplier;
+                Multiplier--;
+
+            }
+
+            mod = sum % 11;
+            subst = 11 - mod;
+            parsed_number1 = (int)Char.GetNumericValue(ISBN_number[9]);
+            if (ISBN_number[9].Equals('x'))
+            {
+
+                parsed_number1 = (int)Char.GetNumericValue(ISBN_number[9]);
+            }
+            if (subst == 10 && ISBN_number[9].Equals('x'))
+            {
+                return true;
+                
+            }
+
+            else if (subst == parsed_number1)
+            {
+                return true;
+                
+
+            }
+
+            else
+            {
+                return false;
+            }
+                        
         }
         public void Update_Book()
         {

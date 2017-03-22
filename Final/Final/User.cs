@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
+using System.Text.RegularExpressions;
 namespace Final
 {
     public class User
@@ -75,10 +75,15 @@ namespace Final
                 {
                     MessageBox.Show("required");
                 }
+                else if (value.Length < 5 && value.Length > 25)
+                {
+                    MessageBox.Show("Password length should be at least 6 and at most 25");
+                }
+                
                 else
-                { 
-                _password = value;
-            }
+                {
+                    _password = value;
+                }
             }
         }
         public string Email
@@ -89,7 +94,20 @@ namespace Final
             }
             set
             {
-                _email = value;
+                if (value=="")
+                {
+                    MessageBox.Show("Email filed required!");
+                }
+                Regex rg = new Regex("[a-zA-Z0-9]{1,25}@[a-zA-Z0-9]{1,25}.[a-zA-Z]{2,3}");
+                if (rg.IsMatch(value))
+                {
+                    _email = value;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter email xxxxxxxxx@xxxxx.xxx format");
+                }
+                
             }
         }
 
