@@ -26,16 +26,17 @@ namespace Final
 
         private void create_Click(object sender, RoutedEventArgs e)
         {
-            User us = new User();
+            /*User us = new User();
             us.Firstname = adminfname.Text;
             us.Lastname = adminlname.Text;
             us.Username = adminuname.Text;
             us.Password = AdminPassword.Password;
             us.Email = adminemail.Text;
-            us.PhoneNumber = Convert.ToInt64(adminphone.Text);
+            us.PhoneNumber = Convert.ToInt64(adminphone.Text);*/
 
             Admins addadmin = new Admins();
-            addadmin.Add_Admin(us.Firstname, us.Lastname, us.Username, us.Password, us.Email, us.PhoneNumber);
+            addadmin.Add_Admin(adminfname.Text, adminlname.Text, adminuname.Text, AdminPassword.Password, adminemail.Text, Convert.ToInt64(adminphone.Text));
+            //addadmin.Add_Admin(us.Firstname, us.Lastname, us.Username, us.Password, us.Email, us.PhoneNumber);
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)

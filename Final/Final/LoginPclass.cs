@@ -33,10 +33,10 @@ namespace Final
                 password = value;
             }
         }
-        public bool AdminLogin()
+        /*public bool AdminLogin()
         {
             return true;
-        }
+        }*/
         public bool ClerkLogin()
         {
             return true;
@@ -45,25 +45,26 @@ namespace Final
         public bool AdminLogin(string username, string password)
         {
             
-            if (ConnectionState.Closed == conn.con.State)//this needs to be a try catch
-            {
-                conn.con.Open();
-            }
-            SqlCommand ad = new SqlCommand("select * from Admins where UserName ='" + username + "' and Password = '" + password + "' ", conn.con);
-            DataTable dt = new DataTable();
-            SqlDataReader rd = ad.ExecuteReader();
-            dt.Load(rd);
-                
-            if (dt.Rows.Count == 1)
-              {
-                return true;
-              }
-            else
-             {
-                return false;
-             }
-            }
-          
+                if (ConnectionState.Closed == conn.con.State)//this needs to be a try catch
+                {
+                    conn.con.Open();
+                }
+                SqlCommand ad = new SqlCommand("select * from Admins where UserName ='" + username + "' and Password = '" + password + "' ", conn.con);
+                DataTable dt = new DataTable();
+                SqlDataReader rd = ad.ExecuteReader();
+                dt.Load(rd);
+
+                if (dt.Rows.Count == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            
+          }
+
             
         }
 

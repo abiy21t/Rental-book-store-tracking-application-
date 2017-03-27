@@ -12,28 +12,38 @@ namespace Final
     public class Admins : User
     {
         public DatabaseConnection conn = new DatabaseConnection();
-
+        
+        
         public void Add_Admin(string fname,string lname, string uname, string password, string email, long phone)
         {
+            Firstname = fname;
+            Lastname = lname;
+            Username = uname;
+            Password = password;
+            Email = email;
+            PhoneNumber = phone;
+
+
+
             try
             {
-
+                
 
                 //EmployeeInfo emplp = new EmployeeInfo();
 
-                SqlCommand cmd = new SqlCommand("insert into Admins (FirstName,LastName,UserName,Password,Email,PhoneNumber) values('" + @fname + "','" + @lname + "',@uname,'" + @password + "','" + @email + "','" + @phone + "')", conn.con);
+                SqlCommand cmd = new SqlCommand("insert into Admins (FirstName,LastName,UserName,Password,Email,PhoneNumber) values('" + Firstname + "','" + Lastname + "',@Username,'" + Password + "','" + Email + "','" + PhoneNumber + "')", conn.con);
                 
-                cmd.Parameters.AddWithValue("@fname", fname);
+                cmd.Parameters.AddWithValue("@Firstname", Firstname);
                 
-                cmd.Parameters.AddWithValue("@lname", lname);
+                cmd.Parameters.AddWithValue("@Lastname", Lastname);
                 
-                cmd.Parameters.AddWithValue("@uname", uname);
+                cmd.Parameters.AddWithValue("@Username", Username);
                 
-                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@Password", Password);
                
-                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@Email", Email);
                
-                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                 
                 conn.con.Open();
                 cmd.ExecuteNonQuery();

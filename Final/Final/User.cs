@@ -37,7 +37,7 @@ namespace Final
                     _fname = value;
                 }else
                 {
-                    throw new InvalidNameException("Name cannot contain numbers");
+                    MessageBox.Show("Name cannot contain number");
                 }
             }
         }
@@ -49,7 +49,14 @@ namespace Final
             }
             set
             {
-                _lname = value;
+                if (value.All(char.IsLetter))
+                {
+                    _lname = value;
+                }
+                else
+                {
+                    MessageBox.Show("Last Name connot contain numbers ");
+                }
             }
         }
         public string Username
@@ -75,14 +82,15 @@ namespace Final
                 {
                     MessageBox.Show("required");
                 }
-                else if (value.Length < 5 && value.Length > 25)
+                else if (value.Length >= 6)
                 {
-                    MessageBox.Show("Password length should be at least 6 and at most 25");
+                    _password = value;
                 }
                 
                 else
                 {
-                    _password = value;
+                    MessageBox.Show("Password length should be at least 6");
+                    
                 }
             }
         }
@@ -119,7 +127,17 @@ namespace Final
             }
             set
             {
-                _phoneNum = value;
+                //string log = Convert.ToString(value);
+                //Regex rg = new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
+                //string log = Convert.ToString(value);
+              //  if (rg.IsMatch(log))
+                ////{
+                    _phoneNum = value;
+                //}
+                //else
+                //{
+                  //  MessageBox.Show("Please enter phone number by 999-999-9999 format");
+                //}
             }
         }
 
