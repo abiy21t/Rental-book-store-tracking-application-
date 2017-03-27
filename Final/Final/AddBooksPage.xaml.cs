@@ -26,22 +26,28 @@ namespace Final
 
         private void button_Click(object sender, RoutedEventArgs e)//resiter button
         {
-            Book bok = new Book();
-            bok.Title = txtTitle.Text;
-            bok.Author = txtAuthor.Text;
-            bok.Edition = txtEdition.Text;
-            bok.Price = Convert.ToDouble(txtPrice.Text);
-            bok.ISBN = txtIsbn.Text;
-            bok.CoverImage = txtCoverimage.Text;
+            Book book = new Book();
+            book.Title = txtTitle.Text;
+            book.Author = txtAuthor.Text;
+            book.Edition = txtEdition.Text;
+            book.Price = Convert.ToDouble(txtPrice.Text);
+            book.ISBN = txtIsbn.Text.Replace("-","");
+            book.CoverImage = txtCoverimage.Text;
 
-            bok.ADD_Book(bok.Title, bok.Author, bok.Edition, bok.Price, bok.ISBN, bok.CoverImage);
+            Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN, book.CoverImage);
+            if (added)
+            {
+                AdminHome ah = new AdminHome();
+                ah.Show();
+                this.Close();
+            }
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)//back button
         {
             AdminHome ad = new AdminHome();
             ad.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)//clear button

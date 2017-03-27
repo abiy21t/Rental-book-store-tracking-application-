@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final"
         mc:Ignorable="d"
-        Title="AdminHome" Height="518.334" Width="630.602">
+        Title="AdminHome" Height="520" Width="630">
     <Grid Margin="0,0,-8,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="450*"/>
             <ColumnDefinition Width="81*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="button" Content="Add Book" HorizontalAlignment="Left" Margin="21,216,0,0" VerticalAlignment="Top" Width="153" Click="button_Click" Height="30"/>
-        <Button x:Name="button1" Content="Add New Clerk" HorizontalAlignment="Left" Margin="21,165,0,0" VerticalAlignment="Top" Width="153" Height="30"/>
+        <Button x:Name="button1" Content="Add New Clerk" HorizontalAlignment="Left" Margin="21,165,0,0" VerticalAlignment="Top" Width="153" Height="30" Click="button1_Click"/>
         <Button x:Name="button2" Content="Add New Admin" HorizontalAlignment="Left" Margin="21,113,0,0" VerticalAlignment="Top" Width="153" Click="button2_Click" Height="30"/>
         <Label x:Name="label" Content="Admin Home" HorizontalAlignment="Left" Margin="136,47,0,0" VerticalAlignment="Top" Width="225" FontSize="16" FontWeight="Bold" Height="46"/>
         <Button x:Name="button3" Grid.ColumnSpan="2" Content="LogOut" HorizontalAlignment="Left" Margin="468,10,0,0" VerticalAlignment="Top" Width="89" Height="29" Click="button3_Click"/>

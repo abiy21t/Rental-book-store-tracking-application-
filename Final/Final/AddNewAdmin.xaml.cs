@@ -26,16 +26,44 @@ namespace Final
 
         private void create_Click(object sender, RoutedEventArgs e)
         {
+            Boolean okay = true;
+            long num = 0;
+            string temp = "";
             User us = new User();
             us.Firstname = adminfname.Text;
             us.Lastname = adminlname.Text;
             us.Username = adminuname.Text;
             us.Password = AdminPassword.Password;
             us.Email = adminemail.Text;
-            us.PhoneNumber = Convert.ToInt64(adminphone.Text);
+            if (adminphone.Text == "")
+            {
+                okay = false;
+                MessageBox.Show("Phone number field required!");
+            }
+            else
+            {
+                temp = adminphone.Text.Replace("-", "").Replace("(", "").Replace(")","");
+                okay = long.TryParse(temp, out num);
+                //us.PhoneNumber = Convert.ToInt64(adminphone.Text);
 
-            Admins addadmin = new Admins();
-            addadmin.Add_Admin(us.Firstname, us.Lastname, us.Username, us.Password, us.Email, us.PhoneNumber);
+                if (okay)
+                {
+                    us.PhoneNumber = num;
+                    Admins addadmin = new Admins();
+                    okay = addadmin.Add_Admin(us.Firstname, us.Lastname, us.Username, us.Password, us.Email, us.PhoneNumber);
+                    if (okay)
+                    {
+                        AdminHome ah = new AdminHome();
+                        ah.Show();
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid phone number!");
+                }
+            }
+            
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)
@@ -52,7 +80,7 @@ namespace Final
         {
             AdminHome ad = new AdminHome();
             ad.Show();
-            this.Hide();
+            this.Close(); //this needs to be close not hide so that all windows in the program exit properly and arent running invisible in the background.
         }
     }
 }

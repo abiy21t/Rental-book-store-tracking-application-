@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 namespace Final
 {
     public class LoginPclass
@@ -44,8 +45,8 @@ namespace Final
         public DatabaseConnection conn = new DatabaseConnection();
         public bool AdminLogin(string username, string password)
         {
-            
-            if (ConnectionState.Closed == conn.con.State)//this needs to be a try catch
+
+            if (ConnectionState.Closed == conn.con.State)//does this need to be a try catch?
             {
                 conn.con.Open();
             }
@@ -53,19 +54,51 @@ namespace Final
             DataTable dt = new DataTable();
             SqlDataReader rd = ad.ExecuteReader();
             dt.Load(rd);
-                
+
             if (dt.Rows.Count == 1)
-              {
+            {
                 return true;
-              }
-            else
-             {
-                return false;
-             }
             }
-          
-            
+            else
+            {
+                return false;
+            }
         }
 
+
+
+
+        public Boolean UserLogin(string uname, string pass)
+        {
+            try
+            {
+                if (ConnectionState.Closed == conn.con.State)
+                {
+                    conn.con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE Username = '" + uname + "' and Password = '" + pass + "'", conn.con);
+                DataTable dt = new DataTable();
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+
+                if(dt.Rows.Count == 1)
+                {
+                    conn.con.Close();
+                    return true;
+                }
+                else
+                {
+                    conn.con.Close();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+            MessageBox.Show("Something happened");
+            return false;
+        }
+    }
     }
 

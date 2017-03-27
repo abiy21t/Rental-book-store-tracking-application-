@@ -13,8 +13,9 @@ namespace Final
     {
         public DatabaseConnection conn = new DatabaseConnection();
 
-        public void Add_Admin(string fname,string lname, string uname, string password, string email, long phone)
+        public Boolean Add_Admin(string fname,string lname, string uname, string password, string email, long phone)
         {
+            Boolean done = false;
             try
             {
 
@@ -38,13 +39,16 @@ namespace Final
                 conn.con.Open();
                 cmd.ExecuteNonQuery();
                 conn.con.Close();
-                MessageBox.Show("Data iserted");
+                MessageBox.Show("Data inserted");
+                done = true;
+                return done;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("error" + ex);
             }
+            return done;
 
         }
 

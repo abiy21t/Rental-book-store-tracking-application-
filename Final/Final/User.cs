@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 namespace Final
 {
     public class User
     {
+        public DatabaseConnection conn = new DatabaseConnection();
         private string _fname;
         private string _lname;
         private string _username;
@@ -27,17 +29,21 @@ namespace Final
             }
             set
             {
-                //if fname doesnt contain numbers or symbols
-                /*
-                 * MS see comment below
-                 */
-
-                if (value.All(char.IsLetter))
+                if (value.All(char.IsLetter) && value != "")
                 {
                     _fname = value;
-                }else
+                }
+                else if (value == "")
                 {
-                    throw new InvalidNameException("Name cannot contain numbers");
+                    MessageBox.Show("First name field required");
+                    //throw new Exception("hello");
+                    //throw new InvalidNameException("hello");
+                    //throw new ArgumentException("hello");
+                    //how can we throw an error so it stops at this message?
+                }
+                else
+                {
+                    throw new InvalidNameException("First name cannot contain numbers");
                 }
             }
         }
@@ -49,7 +55,18 @@ namespace Final
             }
             set
             {
-                _lname = value;
+                if (value.All(char.IsLetter) && value != "")
+                {
+                    _lname = value;
+                }
+                else if (value == "")
+                {
+                    MessageBox.Show("Last name field required");
+                }
+                else
+                {
+                    throw new InvalidNameException("Last name cannot contain numbers");
+                }
             }
         }
         public string Username
@@ -60,7 +77,15 @@ namespace Final
             }
             set
             {
-                _username = value;
+                if (value == "")
+                {
+                    MessageBox.Show("Username field required");
+                }
+                else
+                {
+                    _username = value;
+                }
+                
             }
         }
         public string Password
@@ -73,9 +98,9 @@ namespace Final
             {
                 if (value == "")
                 {
-                    MessageBox.Show("required");
+                    MessageBox.Show("Password field required");
                 }
-                else if (value.Length < 5 && value.Length > 25)
+                else if (value.Length < 5 || value.Length > 25)
                 {
                     MessageBox.Show("Password length should be at least 6 and at most 25");
                 }
@@ -94,18 +119,18 @@ namespace Final
             }
             set
             {
-                if (value=="")
-                {
-                    MessageBox.Show("Email filed required!");
-                }
                 Regex rg = new Regex("[a-zA-Z0-9]{1,25}@[a-zA-Z0-9]{1,25}.[a-zA-Z]{2,3}");
-                if (rg.IsMatch(value))
+                if (rg.IsMatch(value) && (value.Contains(".com") || value.Contains(".net") || value.Contains(".edu") || value.Contains(".gov") || value.Contains(".org")) && value != "")
                 {
                     _email = value;
                 }
+                else if (value == "")
+                {
+                    MessageBox.Show("Email field required!");
+                }
                 else
                 {
-                    MessageBox.Show("Please enter email xxxxxxxxx@xxxxx.xxx format");
+                    MessageBox.Show("Please enter email xxxxxxx@xxxxx.xxx format");
                 }
                 
             }
@@ -119,8 +144,44 @@ namespace Final
             }
             set
             {
-                _phoneNum = value;
+                    _phoneNum = value;
+  
             }
+        }
+
+        public Boolean Add_User(string uname, string pass, string fname, string lname, string email, long phone)
+        {
+            Boolean done = false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Users (Username,Password,FirstName,LastName,Email,PhoneNumber) values('" + @uname + "','" + @pass + "','" + @fname +"','" + @lname + "','" + @email + "','" + @phone + "')", conn.con);
+
+                cmd.Parameters.AddWithValue("@fname", fname);
+
+                cmd.Parameters.AddWithValue("@lname", lname);
+
+                cmd.Parameters.AddWithValue("@uname", uname);
+
+                cmd.Parameters.AddWithValue("@password", pass);
+
+                cmd.Parameters.AddWithValue("@email", email);
+
+                cmd.Parameters.AddWithValue("@phone", phone);
+
+                conn.con.Open();
+                //cmd.Connection = conn.con;
+                cmd.ExecuteNonQuery();
+                conn.con.Close();
+                MessageBox.Show("User has been added");
+                done = true;
+                return done;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+            }
+            return done;
         }
 
 

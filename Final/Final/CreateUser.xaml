@@ -17,11 +17,11 @@
         <TextBox x:Name="textBox_email" HorizontalAlignment="Left" Height="23" Margin="246,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox_lname" HorizontalAlignment="Left" Height="23" Margin="246,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox_fname" HorizontalAlignment="Left" Height="23" Margin="246,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox_password" HorizontalAlignment="Left" Height="23" Margin="246,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox_user" HorizontalAlignment="Left" Height="23" Margin="246,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,287,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <Button x:Name="button_create" Content="Create" HorizontalAlignment="Left" Margin="432,287,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
         <Label x:Name="label" Content="Create New User Account" HorizontalAlignment="Left" Margin="145,7,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="246,93,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
 
     </Grid>
 </Window>
