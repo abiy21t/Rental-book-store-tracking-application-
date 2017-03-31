@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Final"
         mc:Ignorable="d"
         Title="AddNewAdmin" Height="470.213" Width="520.212">
-    <Grid>
+    <Grid Margin="0,0,-8,-21">
         <Label x:Name="label" Content="Add New Admin" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top" Width="245" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="label1" Content="First Name" HorizontalAlignment="Left" Margin="52,79,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
         <TextBox x:Name="adminlname" HorizontalAlignment="Left" Height="23" Margin="154,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="2"/>
@@ -23,6 +23,7 @@
         <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" Margin="244,372,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold" FontSize="13" Click="clear_Click"/>
         <PasswordBox x:Name="AdminPassword" HorizontalAlignment="Left" Margin="154,236,0,0" VerticalAlignment="Top" Width="195" Height="23"/>
         <Button x:Name="button" Content="Back to Admin Home" HorizontalAlignment="Left" Margin="389,39,0,0" VerticalAlignment="Top" Width="101" FontSize="10" Click="button_Click"/>
+        <Label x:Name="adminleble" Content="" Foreground="Red" HorizontalAlignment="Left" Height="36" Margin="84,38,0,0" VerticalAlignment="Top" Width="265"/>
 
     </Grid>
 </Window>

@@ -27,21 +27,38 @@ namespace Final
         private void button_Click(object sender, RoutedEventArgs e)//login button
         {
             LoginPclass log = new LoginPclass();
-            if (radAdmin.IsChecked == true)
+            log.UserName = txtuname.Text;
+            log.Password = passwordBox.Password;
+            bool auth = log.AdminLogin(log.UserName, log.Password);
+            if (txtuname.Text == "")
             {
-                log.UserName = txtuname.Text;
-                log.Password = passwordBox.Password;
-                bool auth = log.AdminLogin(log.UserName, log.Password);
-                if (auth == true)
+                nameandpassword.Content = "";
+                username.Content = "User name required";
+            }
+            if (passwordBox.Password == "")
+            {
+                nameandpassword.Content = "";
+                password.Content = "Password required";
+            }
+            else
+            {
+                if (radAdmin.IsChecked == true)
                 {
-                    AdminHome adh = new AdminHome();
-                    adh.Show();
-                    this.Close();
-                    //MessageBox.Show("user name and password correct");
-                }
-                else
-                {
-                    MessageBox.Show("Username or Password incorrect.");
+
+
+                    if (auth == true)
+                    {
+                        AdminHome adh = new AdminHome();
+                        adh.Show();
+                        this.Close();
+                        //MessageBox.Show("user name and password correct");
+                    }
+                    else { 
+
+                        username.Content = "";
+                        password.Content = "";
+                        nameandpassword.Content = ("Username or Password incorrect.");
+                    }
                 }
             }
             if (radUser.IsChecked == true)

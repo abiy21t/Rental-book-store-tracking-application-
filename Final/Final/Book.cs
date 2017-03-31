@@ -87,7 +87,7 @@ namespace Final
                 }
                 else
                 {
-                    MessageBox.Show("Invalid ISBN-10.");
+                    MessageBox.Show("Invalid ISBN please enter 10 digit isbn.");
                 }
             }
         }
