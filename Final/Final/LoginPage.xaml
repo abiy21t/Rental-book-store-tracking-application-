@@ -8,15 +8,13 @@
         Title="LoginPage" Height="390" Width="480">
     <Grid Margin="0,0,2,-1">
         <Label x:Name="label" Content="Login" HorizontalAlignment="Left" Height="41" Margin="199,33,0,0" VerticalAlignment="Top" Width="55" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="txtuname" HorizontalAlignment="Left" Height="25" Margin="150,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"/>
-        <Button x:Name="button_login" Content="Login" HorizontalAlignment="Left" Height="30" Margin="199,210,0,0" VerticalAlignment="Top" Width="117" Click="button_Click"/>
+        <TextBox x:Name="txtuname" HorizontalAlignment="Left" Height="25" Margin="150,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" TabIndex="1"/>
+        <Button x:Name="button_login" Content="Login" HorizontalAlignment="Left" Height="30" Margin="199,210,0,0" VerticalAlignment="Top" Width="117" Click="button_Click" TabIndex="3"/>
         <RadioButton x:Name="radAdmin" Content="Admin" HorizontalAlignment="Left" Margin="344,133,0,0" VerticalAlignment="Top" Width="83" Height="21"/>
         <RadioButton x:Name="radUser" Content="User" HorizontalAlignment="Left" Height="21" Margin="344,159,0,0" VerticalAlignment="Top" Width="83" IsChecked="True"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="150,169,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="150,169,0,0" VerticalAlignment="Top" Width="166" Height="25" TabIndex="2"/>
         <Label x:Name="label1" Content="Username:" HorizontalAlignment="Left" Margin="79,127,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Password:" HorizontalAlignment="Left" Margin="83,169,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="New User?" HorizontalAlignment="Left" Margin="333,283,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Create Account" HorizontalAlignment="Left" Margin="323,309,0,0" VerticalAlignment="Top" Width="91" Height="25" Click="button_Click_1"/>
 
     </Grid>
 </Window>

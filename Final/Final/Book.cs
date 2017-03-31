@@ -87,7 +87,7 @@ namespace Final
                 }
                 else
                 {
-                    MessageBox.Show("You enterd invalid ISBN please enter 10 digit valid one");
+                    MessageBox.Show("Invalid ISBN-10.");
                 }
             }
         }
@@ -104,12 +104,11 @@ namespace Final
             }
         }
 
-        public void ADD_Book(string title,string author,string edition,double price,string isbn,string coverimage)
+        public Boolean ADD_Book(string title,string author,string edition,double price,string isbn,string coverimage)
         {
+            Boolean okay = false;
             try
             {
-
-
                 DatabaseConnection conn = new DatabaseConnection();
 
                 SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,CoverImage) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + @coverimage + "')", conn.con);
@@ -129,13 +128,15 @@ namespace Final
                 conn.con.Open();
                 cmd.ExecuteNonQuery();
                 conn.con.Close();
-                MessageBox.Show("Data iserted");
+                MessageBox.Show("Data inserted");
+                okay = true;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("error" + ex);
             }
+            return okay;
         }
         public bool ISBN_Cheker(string isbn)
         {
@@ -190,10 +191,7 @@ namespace Final
             else if (subst == parsed_number1)
             {
                 return true;
-                
-
             }
-
             else
             {
                 return false;
@@ -202,6 +200,14 @@ namespace Final
         }
         public void Update_Book()
         {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
 
         }
         public void Delete_Book()

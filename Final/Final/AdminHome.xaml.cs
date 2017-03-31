@@ -24,25 +24,32 @@ namespace Final
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)//add book button
         {
             AddBooksPage bk = new AddBooksPage();
             bk.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void button2_Click(object sender, RoutedEventArgs e)//add admin button
         {
             AddNewAdmin ad = new AddNewAdmin();
             ad.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void button3_Click(object sender, RoutedEventArgs e)//logout button
         {
             MainWindow mw = new MainWindow();
             mw.Show();
-            this.Hide();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)//add clerk/new user
+        {
+            CreateUser cu = new CreateUser();
+            cu.Show();
+            this.Close();
         }
     }
 }

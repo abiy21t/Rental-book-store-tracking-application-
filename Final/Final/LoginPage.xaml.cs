@@ -48,14 +48,18 @@ namespace Final
             {
                 log.UserName = txtuname.Text;
                 log.Password = passwordBox.Password;
+                Boolean authorized = log.UserLogin(log.UserName, log.Password);
+                if (authorized)
+                {
+                    ClerkHome ch = new ClerkHome();
+                    ch.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Username or Password incorrect.");
+                }
             }
-        }
-
-        private void button_Click_1(object sender, RoutedEventArgs e)//create new user button
-        {
-            CreateUser cu = new CreateUser();
-            cu.Show();
-            this.Close();
         }
     }
 }

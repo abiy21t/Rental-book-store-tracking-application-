@@ -26,14 +26,50 @@ namespace Final
 
         private void button_Click(object sender, RoutedEventArgs e)//cancel button
         {
-            LoginPage lp = new LoginPage();
-            lp.Show();
+            AdminHome ah = new AdminHome();
+            ah.Show();
             this.Close();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)//create button
         {
+            Boolean okay = true;
+            long num = 0;
+            string temp = "";
+            User us = new User();
+            us.Firstname = textBox_fname.Text;
+            us.Lastname = textBox_lname.Text;
+            us.Username = textBox_user.Text;
+            us.Password = passwordBox.Password;
+            us.Email = textBox_email.Text;
+            if (textBox_phone.Text == "")
+            {
+                okay = false;
+                MessageBox.Show("Phone number field required!");
+            }
+            else
+            {
+                temp = textBox_phone.Text.Replace("-", "").Replace("(", "").Replace(")", "");
+                okay = long.TryParse(temp, out num);
+                //us.PhoneNumber = Convert.ToInt64(adminphone.Text);
 
+                if (okay)
+                {
+                    us.PhoneNumber = num;
+                    User user = new User();
+                    okay = user.Add_User(us.Username,us.Password,us.Firstname, us.Lastname, us.Email, us.PhoneNumber);
+                    if (okay)
+                    {
+                        AdminHome ah = new AdminHome();
+                        ah.Show();
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid phone number!");
+                }
+            }
         }
     }
 }
