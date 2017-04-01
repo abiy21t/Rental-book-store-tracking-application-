@@ -16,7 +16,7 @@ namespace Final
         private string _Edition;
         private double _Price;
         private string _ISBN;
-        private string _CoverImage;
+        private byte[] _CoverImage;
 
         public string Title
         {
@@ -87,31 +87,31 @@ namespace Final
                 }
                 else
                 {
-                    MessageBox.Show("Invalid ISBN please enter 10 digit isbn.");
+                    MessageBox.Show("Invalid ISBN please enter 10 digit valid isbn.");
                 }
             }
         }
-        public string CoverImage
-        {
-            get
-            {
-                return _CoverImage;
-            }
-            set
-            {
+        /*  public byte[] CoverImage
+          {
+              get
+              {
+                  return _CoverImage;
+              }
+              set
+              {
 
-                _CoverImage = value;
-            }
-        }
-
-        public Boolean ADD_Book(string title,string author,string edition,double price,string isbn,string coverimage)
+                  _CoverImage = value;
+              }
+          }*/
+        //,byte[] coverimage
+        public Boolean ADD_Book(string title,string author,string edition,double price,string isbn)
         {
             Boolean okay = false;
             try
             {
                 DatabaseConnection conn = new DatabaseConnection();
-
-                SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,CoverImage) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + @coverimage + "')", conn.con);
+                //,'" + @coverimage + "'
+                SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "')", conn.con);
 
                 cmd.Parameters.AddWithValue("@title", title);
 
@@ -123,12 +123,12 @@ namespace Final
 
                 cmd.Parameters.AddWithValue("@isbn", isbn);
 
-                cmd.Parameters.AddWithValue("@covrimage", coverimage);
+               // cmd.Parameters.AddWithValue("@covrimage", coverimage);
 
                 conn.con.Open();
                 cmd.ExecuteNonQuery();
                 conn.con.Close();
-                MessageBox.Show("Data inserted");
+                MessageBox.Show("Book Registered");
                 okay = true;
 
             }
@@ -142,7 +142,7 @@ namespace Final
         {
             
             char[] Use_input_parsed_to_char = isbn.ToCharArray();
-            Console.WriteLine("\n");
+            
             char[] ISBN_number;
             ISBN_number = new char[10];
 

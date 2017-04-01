@@ -92,9 +92,6 @@
       <DependentUpon>CreateUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="addAdminPage.xaml.cs">
-      <DependentUpon>addAdminPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Book.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="FinalCheckout.xaml.cs">
@@ -110,10 +107,6 @@
       <DependentUpon>MainDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <Page Include="addAdminPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddBooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
