@@ -9,19 +9,19 @@
     <Grid Margin="0,0,-8,-21">
         <Label x:Name="label" Content="Add New Admin" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top" Width="245" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="label1" Content="First Name" HorizontalAlignment="Left" Margin="52,79,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
-        <TextBox x:Name="adminlname" HorizontalAlignment="Left" Height="23" Margin="154,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="2"/>
-        <TextBox x:Name="adminuname" HorizontalAlignment="Left" Height="23" Margin="154,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="3"/>
-        <TextBox x:Name="adminphone" HorizontalAlignment="Left" Height="23" Margin="154,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="6"/>
-        <TextBox x:Name="adminemail" HorizontalAlignment="Left" Height="23" Margin="154,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="5"/>
-        <TextBox x:Name="adminfname" HorizontalAlignment="Left" Height="23" Margin="154,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="1"/>
+        <TextBox x:Name="adminlname" HorizontalAlignment="Left" Height="23" Margin="154,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="2" TabIndex="2"/>
+        <TextBox x:Name="adminuname" HorizontalAlignment="Left" Height="23" Margin="154,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="3" TabIndex="3"/>
+        <TextBox x:Name="adminphone" HorizontalAlignment="Left" Height="23" Margin="154,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="6" TabIndex="6"/>
+        <TextBox x:Name="adminemail" HorizontalAlignment="Left" Height="23" Margin="154,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="5" TabIndex="5"/>
+        <TextBox x:Name="adminfname" HorizontalAlignment="Left" Height="23" Margin="154,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" AutomationProperties.AccessKey="1" TabIndex="1"/>
         <Label x:Name="label1_Copy" Content="Last Name" HorizontalAlignment="Left" Margin="52,132,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
         <Label x:Name="label1_Copy1" Content="User Name" HorizontalAlignment="Left" Margin="52,187,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
         <Label x:Name="label1_Copy2" Content="Password" HorizontalAlignment="Left" Margin="52,236,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
         <Label x:Name="label1_Copy3" Content="E-mail " HorizontalAlignment="Left" Margin="56,282,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
         <Label x:Name="label1_Copy4" Content="Phone" HorizontalAlignment="Left" Margin="55,327,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.501,-0.072" FontWeight="Bold" FontSize="13"/>
-        <Button x:Name="create" Content="Create" HorizontalAlignment="Left" Margin="104,372,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold" FontSize="13" Click="create_Click"/>
-        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" Margin="244,372,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold" FontSize="13" Click="clear_Click"/>
-        <PasswordBox x:Name="AdminPassword" HorizontalAlignment="Left" Margin="154,236,0,0" VerticalAlignment="Top" Width="195" Height="23"/>
+        <Button x:Name="create" Content="Create" HorizontalAlignment="Left" Margin="287,372,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold" FontSize="13" Click="create_Click" TabIndex="7"/>
+        <Button x:Name="clear" Content="Clear" HorizontalAlignment="Left" Margin="133,372,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold" FontSize="13" Click="clear_Click"/>
+        <PasswordBox x:Name="AdminPassword" HorizontalAlignment="Left" Margin="154,236,0,0" VerticalAlignment="Top" Width="195" Height="23" TabIndex="4"/>
         <Button x:Name="button" Content="Back to Admin Home" HorizontalAlignment="Left" Margin="389,39,0,0" VerticalAlignment="Top" Width="101" FontSize="10" Click="button_Click"/>
         <Label x:Name="adminleble" Content="" Foreground="Red" HorizontalAlignment="Left" Height="36" Margin="84,38,0,0" VerticalAlignment="Top" Width="265"/>
 

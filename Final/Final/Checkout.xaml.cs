@@ -22,8 +22,9 @@ namespace Final
         public Checkout()
         {
             InitializeComponent();
-            numBooks();
+            
             totalPrice();
+            numBooks();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)//cancel checkout

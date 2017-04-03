@@ -68,7 +68,7 @@ namespace Final
             }
             catch(Exception x)
             {
-                throw new Exception ("error"+ x);
+                throw new Exception ("Error connecting to database. \n"+ x);
             }
             
           }
@@ -123,7 +123,7 @@ namespace Final
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error " + ex);
+                MessageBox.Show("Error connecting to database. \n" + ex);
             }
             MessageBox.Show("Something happened");
             return false;
