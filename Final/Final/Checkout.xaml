@@ -8,7 +8,7 @@
         Title="Checkout" Height="390" Width="480">
     <Grid>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="183" Margin="10,34,0,0" VerticalAlignment="Top" Width="452">
-            
+
         </ListBox>
         <Label x:Name="label" Content="Checkout" HorizontalAlignment="Left" Margin="197,3,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Number of Books:" HorizontalAlignment="Left" Margin="10,272,0,0" VerticalAlignment="Top"/>
@@ -18,11 +18,11 @@
         <Label x:Name="label_totalCost" Content="-" HorizontalAlignment="Left" Margin="121,298,0,0" VerticalAlignment="Top"/>
         <Button x:Name="button_cancel" Content="Cancel Checkout" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="99" BorderBrush="Red" Click="button1_Click"/>
         <Button x:Name="button_confirm" Content="Confirm" HorizontalAlignment="Left" Margin="387,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button_add" Content="Add Another" HorizontalAlignment="Left" Margin="345,222,0,0" VerticalAlignment="Top" Width="85" Click="button_add_Click"/>
         <Rectangle x:Name="cancelbox" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="183" Margin="78,59,0,0" Stroke="Black" VerticalAlignment="Top" Width="325" Visibility="Collapsed"/>
         <Label x:Name="label_cancelWarning" Content="Are you sure you want to cancel this sale?" HorizontalAlignment="Left" Margin="121,106,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Button x:Name="button_yes" Content="Yes" HorizontalAlignment="Left" Margin="298,197,0,0" VerticalAlignment="Top" Width="75" Visibility="Collapsed" Click="button_yes_Click"/>
         <Button x:Name="button_no" Content="No" HorizontalAlignment="Left" Margin="111,197,0,0" VerticalAlignment="Top" Width="75" Click="button_no_Click" Visibility="Collapsed"/>
-        <Button x:Name="button_add" Content="Add Another" HorizontalAlignment="Left" Margin="345,222,0,0" VerticalAlignment="Top" Width="85" Click="button_add_Click"/>
 
     </Grid>
 </Window>

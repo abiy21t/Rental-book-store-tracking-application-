@@ -42,7 +42,7 @@ FileAccess.Read);
             imagebox.SetValue(Image.SourceProperty, imgs.
             ConvertFromString(dlg.FileName.ToString()));*/
         }
-        private void button_Click(object sender, RoutedEventArgs e)//resiter button
+        private void button_Click(object sender, RoutedEventArgs e)//register button
         {
             Book book = new Book();
             book.Title = txtTitle.Text;
@@ -53,7 +53,7 @@ FileAccess.Read);
             // book.CoverImage = data;
 
             //, book.CoverImage
-            Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN);
+            Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN, 0, 1);
             if (added)
             {
                 AdminHome ah = new AdminHome();

@@ -30,18 +30,30 @@ namespace Final
             log.UserName = txtuname.Text;
             log.Password = passwordBox.Password;
             bool auth = log.AdminLogin(log.UserName, log.Password);
-            if (txtuname.Text == "")
+            if(txtuname.Text == "" || passwordBox.Password == "")
             {
-                nameandpassword.Content = "";
-                username.Content = "User name required";
-            }
-            if (passwordBox.Password == "")
-            {
-                nameandpassword.Content = "";
-                password.Content = "Password required";
-            }
+                if (txtuname.Text == "")
+                {
+                    nameandpassword.Content = "";
+                    username.Content = "Username required";
+                }else
+                {
+                    username.Content = "";
+                }
+                if (passwordBox.Password == "")
+                {
+                    nameandpassword.Content = "";
+                    password.Content = "Password required";
+                }
+                else
+                {
+                    password.Content = "";
+                }
+            }           
             else
             {
+                username.Content = "";
+                password.Content = "";
                 if (radAdmin.IsChecked == true)
                 {
 
@@ -53,28 +65,33 @@ namespace Final
                         this.Close();
                         //MessageBox.Show("user name and password correct");
                     }
-                    else { 
+                    else
+                    {
 
                         username.Content = "";
                         password.Content = "";
                         nameandpassword.Content = ("Username or Password incorrect.");
                     }
                 }
-            }
-            if (radUser.IsChecked == true)
-            {
-                log.UserName = txtuname.Text;
-                log.Password = passwordBox.Password;
-                Boolean authorized = log.UserLogin(log.UserName, log.Password);
-                if (authorized)
+
+                else if (radUser.IsChecked == true)
                 {
-                    ClerkHome ch = new ClerkHome();
-                    ch.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Username or Password incorrect.");
+
+                    log.UserName = txtuname.Text;
+                    log.Password = passwordBox.Password;
+                    Boolean authorized = log.UserLogin(log.UserName, log.Password);
+                    if (authorized)
+                    {
+                        //BookData bd = new BookData();
+                        ClerkHome ch = new ClerkHome();
+                        //ch.Closed() += bd.ClearCart();
+                        ch.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        nameandpassword.Content = ("Username or Password incorrect.");
+                    }
                 }
             }
         }

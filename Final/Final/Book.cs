@@ -17,6 +17,8 @@ namespace Final
         private double _Price;
         private string _ISBN;
         private byte[] _CoverImage;
+        private int _inCart;
+        private int _Stock;
 
         public string Title
         {
@@ -91,6 +93,28 @@ namespace Final
                 }
             }
         }
+        public int InCart
+        {
+            get
+            {
+                return _inCart;
+            }
+            set
+            {
+                _inCart = value;
+            }
+        }
+        public int Stock
+        {
+            get
+            {
+                return _Stock;
+            }
+            set
+            {
+                _Stock = value;
+            }
+        }
         /*  public byte[] CoverImage
           {
               get
@@ -104,14 +128,23 @@ namespace Final
               }
           }*/
         //,byte[] coverimage
-        public Boolean ADD_Book(string title,string author,string edition,double price,string isbn)
+
+        //public Book(string title, string author, string edition, double price, string isbn, int inCart, int stock)
+        //{
+        //    Title = title;
+        //    Author = author;
+        //    Edition = edition;
+        //    Price = price;
+        //    ISBN = isbn;
+        //}
+        public Boolean ADD_Book(string title,string author,string edition,double price,string isbn, int inCart, int stock)
         {
             Boolean okay = false;
             try
             {
                 DatabaseConnection conn = new DatabaseConnection();
                 //,'" + @coverimage + "'
-                SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "')", conn.con);
+                SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,InCart,Stock) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + inCart + "','" + @stock + "')", conn.con);
 
                 cmd.Parameters.AddWithValue("@title", title);
 
@@ -122,8 +155,10 @@ namespace Final
                 cmd.Parameters.AddWithValue("@price", price);
 
                 cmd.Parameters.AddWithValue("@isbn", isbn);
+                cmd.Parameters.AddWithValue("@inCart", inCart);
+                cmd.Parameters.AddWithValue("@stock", stock);
 
-               // cmd.Parameters.AddWithValue("@covrimage", coverimage);
+                // cmd.Parameters.AddWithValue("@covrimage", coverimage);
 
                 conn.con.Open();
                 cmd.ExecuteNonQuery();
@@ -140,7 +175,7 @@ namespace Final
         }
         public bool ISBN_Cheker(string isbn)
         {
-            
+            isbn = isbn.Replace("-","");
             char[] Use_input_parsed_to_char = isbn.ToCharArray();
             
             char[] ISBN_number;
@@ -156,9 +191,9 @@ namespace Final
 
             int Multiplier = 10;
             int sum = 0;
-            int mod;
-            int subst;
-            int parsed_number1 = 0;
+            int mod,subst, parsed_number1;
+            //int subst;
+            //int parsed_number1 = 0;
             for (int i = 0; i < ISBN_number.Length; i++)
             {
                 if (Multiplier == 1)
@@ -214,9 +249,6 @@ namespace Final
         {
 
         }
-        public void Search_Book()
-        {
-
-        }
+        
     }
 }

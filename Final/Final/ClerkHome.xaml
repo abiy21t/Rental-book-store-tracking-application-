@@ -8,17 +8,19 @@
         Title="ClerkHome" Height="390" Width="480">
     <Grid>
         <Button x:Name="button" Content="Logout" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" Width="75" Click="logout_button_Click"/>
-        <Button x:Name="button_search" Content="Search ISBN" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="82" Click="button1_Click"/>
-        <Button x:Name="button_display" Content="Display Books" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="82" Click="button1_Click_1"/>
+        <Button x:Name="button_search" Content="Search ISBN" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="82" Click="button1_Click"/>
+        <Button x:Name="button_display" Content="Display Books" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="82" Click="button1_Click_1"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="302" Margin="126,10,0,0" VerticalAlignment="Top" Width="323"/>
         <Button x:Name="button_add" Content="Add to Cart" HorizontalAlignment="Left" Margin="186,320,0,0" VerticalAlignment="Top" Width="75" Click="button_add_Click"/>
         <Button x:Name="button_checkout" Content="Proceed to Checkout" HorizontalAlignment="Left" VerticalAlignment="Top" Width="131" Margin="318,320,0,0" BorderBrush="Blue" BorderThickness="1.5" Click="button_checkout_Click"/>
         <Button x:Name="button1" Content="Clear list" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Red" Click="button1_Click_2"/>
         <Rectangle x:Name="searchbox" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="114" Stroke="Black" VerticalAlignment="Top" Width="280" Margin="144,79,0,0" Visibility="Collapsed"/>
         <Label x:Name="label_isbn" Content="Enter an ISBN-10 Number:" HorizontalAlignment="Left" Margin="208,88,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Button x:Name="button_isbn_search" Content="Search" HorizontalAlignment="Left" Margin="336,161,0,0" VerticalAlignment="Top" Width="75" Visibility="Collapsed"/>
+        <Button x:Name="button_isbn_search" Content="Search" HorizontalAlignment="Left" Margin="336,161,0,0" VerticalAlignment="Top" Width="75" Visibility="Collapsed" Click="button_isbn_search_Click"/>
         <Button x:Name="button_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="162,161,0,0" VerticalAlignment="Top" Width="75" Click="button_cancel_Click" Visibility="Collapsed"/>
         <TextBox x:Name="textBox_search" HorizontalAlignment="Left" Height="23" Margin="201,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" TextAlignment="Center" Visibility="Collapsed"/>
+        <Button x:Name="button2" Content="Search Title" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="82" Click="button2_Click"/>
+        <Button x:Name="button_author" Content="Search Author" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="82" Click="button_author_Click"/>
 
     </Grid>
 </Window>

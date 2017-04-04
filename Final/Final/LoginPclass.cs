@@ -38,17 +38,17 @@ namespace Final
         {
             return true;
         }*/
-        public bool ClerkLogin()
-        {
-            return true;
-        }
+        //public bool ClerkLogin()
+        //{
+        //    return true;
+        //}
         public DatabaseConnection conn = new DatabaseConnection();
         public bool AdminLogin(string username, string password)
         {
             try
             {
 
-                if (ConnectionState.Closed == conn.con.State)//this needs to be a try catch
+                if (ConnectionState.Closed == conn.con.State)
                 {
                     conn.con.Open();
                 }
@@ -72,29 +72,6 @@ namespace Final
             }
             
           }
-
-            
-            //if (ConnectionState.Closed == conn.con.State)//does this need to be a try catch?
-            //{
-            //    conn.con.Open();
-            //}
-            //SqlCommand ad = new SqlCommand("select * from Admins where UserName ='" + username + "' and Password = '" + password + "' ", conn.con);
-            //DataTable dt = new DataTable();
-            //SqlDataReader rd = ad.ExecuteReader();
-            //dt.Load(rd);
-
-            //if (dt.Rows.Count == 1)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-
-//        }
-
-
 
 
         public Boolean UserLogin(string uname, string pass)
