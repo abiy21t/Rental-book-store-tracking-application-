@@ -64,3 +64,5 @@ C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\obj
 C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\obj\Debug\Final.g.resources
 C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\obj\Debug\Final.Properties.Resources.resources
 C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\obj\Debug\Final.csproj.GenerateResource.Cache
+C:\Users\Elhanan\Desktop\FinalProject\Final\Final\obj\Debug\UpdateAndDeletePage.g.cs
+C:\Users\Elhanan\Desktop\FinalProject\Final\Final\obj\Debug\UpdateAndDeletePage.baml
