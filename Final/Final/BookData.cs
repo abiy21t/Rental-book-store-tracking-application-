@@ -359,5 +359,35 @@ namespace Final
             }
 
         }
+
+        public void CreateReport()
+        {
+            //write books to csv file
+            //connect to database
+
+            //books in stock
+
+            //books out of stock
+
+            //rented books
+
+            //overdue books
+
+
+            //show/open report
+        }
+
+        public Book AccessOpenLibrary(string isbn)
+        {
+            Book book = new Book();
+            //connect to api
+
+            //read in json
+
+            //convert to book
+
+
+            return book;
+        }
     }
 }
