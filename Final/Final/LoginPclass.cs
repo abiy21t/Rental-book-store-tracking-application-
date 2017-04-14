@@ -78,6 +78,21 @@ namespace Final
     {
       try
       {
+        /*
+         * MS
+         * The way you are creating the connection is fine but it really needs to be wrapped in a 'using' statement.
+         * What this does is creates a code block inside of which that SQLConnection is valid. 
+         * Once it drops out of the code block, it will do 2 things:
+         * 1. It will close the connection to the DB
+         * 2. It will dispose of the connection. 
+         * This last bit is important.. normally we don't care about garbage collection but in this case, since your object created a reference to an
+         * external connection (basically a socket to communicate with the database) you have to mark the object for disposal so the GC will collect it. 
+         * Dispose() doesn't necessarily immediately free up the memory (GC is non-deterministic) but it will tell the garbage collection routine that it's
+         * OK to clean up this object.
+         * 
+         * Ultimately this was at the root of why I couldn't get your program to run.
+         * You will need to follow the same coding pattern I use here in all of your other classes where you access a database. 
+         */
         using (var connection = conn.con)
         {
           connection.Open();
