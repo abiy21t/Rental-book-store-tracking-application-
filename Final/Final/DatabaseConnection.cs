@@ -8,10 +8,25 @@ using System.Data.SqlClient;
 
 namespace Final
 {
-   public class DatabaseConnection
+  public class DatabaseConnection
+  {
+    private string connectionString
     {
-        public SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Elhanan\Desktop\FinalProject\Final\Final\MainDB.mdf;Integrated Security = True");//replace with necessary source file
+      get
+      {
+        var db = Environment.CurrentDirectory + @"\MainDB.mdf";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=" + db + ";Integrated Security=True;";
+        return connectionString;
+      }
     }
+    public SqlConnection con
+    {
+      get
+      {
+        return new SqlConnection(connectionString);//replace with necessary source file
+      }
+    }
+  }
 }
 
 //Abiy data source file
