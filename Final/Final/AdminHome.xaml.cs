@@ -51,5 +51,25 @@ namespace Final
             cu.Show();
             this.Close();
         }
+
+        private void button_report_Click(object sender, RoutedEventArgs e)//create report button
+        {
+            BookData bd = new BookData();
+            bd.CreateReport();
+        
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)//add book through OpenLibrary.org
+        {
+            BookData bd = new BookData();
+            //show isbn entry field
+
+            //collect isbn and check if valid
+                //string isbn = someTextBox
+            //if valid send to openlibrary api
+                //bd.AccessOpenLibrary(isbn); <-- this will return a book
+            //add returned book to database <-- maybe we can move this step to AccessOpenLibrary()
+
+        }
     }
 }

@@ -40,6 +40,15 @@ namespace Final
             total = Math.Round(total, 2);
             return total;
         }
+
+        public void rentCart(List<Book> books)
+        {
+            //connect to database
+
+            //add renter info and collect each books isbn
+
+            //decrease each books stock
+        }
     }
 
     
