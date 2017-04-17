@@ -23,5 +23,14 @@ namespace Final
         {
             InitializeComponent();
         }
+
+        public void SearchedValue(String title, string author, string edition, string price, string isbn)
+        {
+            txtTitle.Text = title;
+            txtAuthor.Text = author;
+            txtEdition.Text = edition;
+            txtPrice.Text = Convert.ToString(price);
+            txtIsbn.Text = isbn;
+        }
     }
 }

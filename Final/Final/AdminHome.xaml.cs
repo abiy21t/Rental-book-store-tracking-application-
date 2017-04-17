@@ -71,5 +71,17 @@ namespace Final
             //add returned book to database <-- maybe we can move this step to AccessOpenLibrary()
 
         }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            Book se = new Book();
+            se.SearchBook(searchtxt.Text);
+
+            UpdateAndDeletePage ud = new UpdateAndDeletePage();
+            ud.Show();
+            this.Close();
+
+
+        }
     }
 }

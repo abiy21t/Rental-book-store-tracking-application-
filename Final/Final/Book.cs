@@ -16,7 +16,7 @@ namespace Final
         private string _Edition;
         private double _Price;
         private string _ISBN;
-        private byte[] _CoverImage;
+        //private byte[] _CoverImage;
         private int _inCart;
         private int _Stock;
 
@@ -250,5 +250,51 @@ namespace Final
 
         }
         
+        public  void SearchBook( string isbn)
+        {
+            string btitle;
+            string bauthor;
+            string bedition;
+            string bprice;
+            string bisbn;
+            try
+            {
+               
+                DatabaseConnection connection = new DatabaseConnection();
+                if (ConnectionState.Closed == connection.con.State)//this needs to be a try catch
+                {
+                    connection.con.Open();
+                }
+                //connection.con.Open();
+                SqlDataReader dr;
+                //SqlCommand command;
+                
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE ISBN = " + isbn, connection.con);
+                
+                dr = cmd.ExecuteReader();
+               
+                if (dr.Read())
+                {
+                   // int btitle = dr.GetString("Bookid);
+                     btitle = (dr["Title"].ToString());
+                     bauthor = (dr["Author"].ToString());
+                     bedition = (dr["Edition"].ToString());
+                     bprice = (dr["Price"].ToString());
+                     bisbn = (dr["ISBN"].ToString());
+
+                    UpdateAndDeletePage se = new UpdateAndDeletePage();
+                    se.SearchedValue(btitle, bauthor, bedition, bprice, bisbn);
+                    connection.con.Close();
+                }
+            //return "k";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("error"+ ex);
+            }
+            
+        }
+
     }
 }
