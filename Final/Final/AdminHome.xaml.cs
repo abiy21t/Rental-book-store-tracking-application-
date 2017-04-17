@@ -71,7 +71,7 @@ namespace Final
             //add returned book to database <-- maybe we can move this step to AccessOpenLibrary()
 
         }
-<<<<<<< HEAD
+
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
@@ -84,7 +84,5 @@ namespace Final
 
 
         }
-=======
->>>>>>> f64528db2c39feec7193d53c78d7bd9062f1b19e
     }
 }
