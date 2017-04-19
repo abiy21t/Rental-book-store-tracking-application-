@@ -78,11 +78,13 @@ namespace Final
             Book se = new Book();
             se.SearchBook(searchtxt.Text);
 
+                   }
+
+        private void button6_Click(object sender, RoutedEventArgs e)
+        {
             UpdateAndDeletePage ud = new UpdateAndDeletePage();
             ud.Show();
             this.Close();
-
-
         }
     }
 }

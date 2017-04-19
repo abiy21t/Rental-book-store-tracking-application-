@@ -24,7 +24,18 @@ namespace Final
             InitializeComponent();
         }
 
-        public void SearchedValue(String title, string author, string edition, string price, string isbn)
+
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            Book se = new Book();
+           Book foundb = se.SearchBook(searchtxt.Text);
+
+            SearchedValue(foundb.Title,foundb.Author,foundb.Edition,foundb.Price,foundb.ISBN);
+            //this.SearchedValue(string title, string author, string edition, string price, string isbn)
+        }
+
+        public void SearchedValue(string title, string author, string edition, double price, string isbn)
         {
             txtTitle.Text = title;
             txtAuthor.Text = author;
@@ -32,5 +43,5 @@ namespace Final
             txtPrice.Text = Convert.ToString(price);
             txtIsbn.Text = isbn;
         }
-    }
-}
+    } }
+

@@ -249,44 +249,47 @@ namespace Final
         {
 
         }
-        
-        public  void SearchBook( string isbn)
+        DatabaseConnection conne = new DatabaseConnection();
+        public  Book SearchBook( string isbn)
         {
             string btitle;
             string bauthor;
             string bedition;
-            string bprice;
+            double bprice;
             string bisbn;
+            Book newbook = new Book();
             try
             {
-               
-                DatabaseConnection connection = new DatabaseConnection();
-                if (ConnectionState.Closed == connection.con.State)//this needs to be a try catch
+                using (var connection = conne.con)
                 {
-                    connection.con.Open();
-                }
-                //connection.con.Open();
-                SqlDataReader dr;
-                //SqlCommand command;
-                
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE ISBN = " + isbn, connection.con);
-                
-                dr = cmd.ExecuteReader();
-               
-                if (dr.Read())
-                {
-                   // int btitle = dr.GetString("Bookid);
-                     btitle = (dr["Title"].ToString());
-                     bauthor = (dr["Author"].ToString());
-                     bedition = (dr["Edition"].ToString());
-                     bprice = (dr["Price"].ToString());
-                     bisbn = (dr["ISBN"].ToString());
+                    connection.Open();
 
-                    UpdateAndDeletePage se = new UpdateAndDeletePage();
-                    se.SearchedValue(btitle, bauthor, bedition, bprice, bisbn);
-                    connection.con.Close();
+
+                    SqlDataReader dr;
+                    //SqlCommand command;
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE ISBN = " + isbn, connection);
+
+                    dr = cmd.ExecuteReader();
+
+                    if (dr.Read())
+                    {
+                        // int btitle = dr.GetString("Bookid);
+                        btitle = (dr["Title"].ToString());
+                        bauthor = (dr["Author"].ToString());
+                        bedition = (dr["Edition"].ToString());
+                        bprice = (dr["Price"]);
+                        bisbn = (dr["ISBN"].ToString());
+                        newbook.Title = btitle;
+                        newbook.Author = bauthor;
+                        newbook.Edition = bedition;
+                        newbook.Price = bprice;
+                        newbook.ISBN = bisbn;
+                       
+                        conne.con.Close();
+                    }
                 }
-            //return "k";
+            return newbook;
             }
             catch (Exception ex)
             {
