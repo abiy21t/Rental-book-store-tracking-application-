@@ -143,29 +143,34 @@ namespace Final
             try
             {
                 DatabaseConnection conn = new DatabaseConnection();
-                //,'" + @coverimage + "'
-                SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,InCart,Stock) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + inCart + "','" + @stock + "')", conn.con);
+                using (var connection = conn.con)
+                {
+                    connection.Open();
 
-                cmd.Parameters.AddWithValue("@title", title);
+                    //,'" + @coverimage + "'
+                    SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,InCart,Stock) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + inCart + "','" + @stock + "')", connection);
 
-                cmd.Parameters.AddWithValue("@author", author);
+                    cmd.Parameters.AddWithValue("@title", title);
 
-                cmd.Parameters.AddWithValue("@edition", edition);
+                    cmd.Parameters.AddWithValue("@author", author);
 
-                cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@edition", edition);
 
-                cmd.Parameters.AddWithValue("@isbn", isbn);
-                cmd.Parameters.AddWithValue("@inCart", inCart);
-                cmd.Parameters.AddWithValue("@stock", stock);
+                    cmd.Parameters.AddWithValue("@price", price);
 
-                // cmd.Parameters.AddWithValue("@covrimage", coverimage);
+                    cmd.Parameters.AddWithValue("@isbn", isbn);
+                    cmd.Parameters.AddWithValue("@inCart", inCart);
+                    cmd.Parameters.AddWithValue("@stock", stock);
 
-                conn.con.Open();
-                cmd.ExecuteNonQuery();
-                conn.con.Close();
-                MessageBox.Show("Book Registered");
-                okay = true;
+                    // cmd.Parameters.AddWithValue("@covrimage", coverimage);
 
+                    //conn.con.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.con.Close();
+                    MessageBox.Show("Book Registered");
+                    okay = true;
+
+                }
             }
             catch (Exception ex)
             {
@@ -233,29 +238,77 @@ namespace Final
             }
                         
         }
-        public void Update_Book()
+        DatabaseConnection conn1 = new DatabaseConnection();
+        public bool Update_Book(string title, string author, string edition, double price, string isbn)
         {
+            bool oky = false;
             try
             {
+                
+                using (var connection = conn1.con)
+                {
+                    connection.Open();
 
+                    SqlCommand cmd = new SqlCommand("update Books  set Title='" + @title + "',Author='"+@author+"',Edition'"+@edition+"',Price'"+@price+"' Where ISBN='"+ @isbn + "'" , connection);
+                    cmd.Parameters.AddWithValue("@title", title);
+
+                    cmd.Parameters.AddWithValue("@author", author);
+
+                    cmd.Parameters.AddWithValue("@edition", edition);
+
+                    cmd.Parameters.AddWithValue("@price", price);
+
+                    //cmd.Parameters.AddWithValue("@isbn", isbn);
+                    cmd.ExecuteNonQuery();
+                    conn1.con.Close();
+                    MessageBox.Show("Book Updated");
+                    oky = true;
+
+                }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("error" + ex);
             }
+
+            return oky;
 
         }
-        public void Delete_Book()
+        public bool Delete_Book(string isbn)
         {
+            bool oky = false;
+            try
+            {
+                DatabaseConnection conn = new DatabaseConnection();
+                using (var connection = conn.con)
+                {
+                    connection.Open();
+                                       
+                    SqlCommand cmd = new SqlCommand("Delete from Books where ISBN=" + isbn, connection);
+
+                                      
+                    cmd.ExecuteNonQuery();
+                    conn.con.Close();
+                    MessageBox.Show("Book Deleted");
+                    oky = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+            }
+
+            return oky;
 
         }
         DatabaseConnection conne = new DatabaseConnection();
-        public  Book SearchBook( string isbn)
+        public Book SearchBook(string isbn)
         {
             string btitle;
             string bauthor;
             string bedition;
-            double bprice;
+            string bprice;
             string bisbn;
             Book newbook = new Book();
             try
@@ -278,25 +331,32 @@ namespace Final
                         btitle = (dr["Title"].ToString());
                         bauthor = (dr["Author"].ToString());
                         bedition = (dr["Edition"].ToString());
-                        bprice = (dr["Price"]);
+                        bprice = (dr["Price"].ToString());
                         bisbn = (dr["ISBN"].ToString());
                         newbook.Title = btitle;
                         newbook.Author = bauthor;
                         newbook.Edition = bedition;
-                        newbook.Price = bprice;
+                        newbook.Price = Convert.ToDouble(bprice);
                         newbook.ISBN = bisbn;
-                       
+                        
                         conne.con.Close();
+                                                
+                       }
+                    else
+                    {
+                        MessageBox.Show("Book Not found");
                     }
-                }
-            return newbook;
+
+                      }
+                
             }
+                     
             catch (Exception ex)
             {
-
+                
                 MessageBox.Show("error"+ ex);
             }
-            
+            return newbook;
         }
 
     }

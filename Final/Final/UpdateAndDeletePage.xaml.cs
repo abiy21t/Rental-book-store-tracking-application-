@@ -28,20 +28,48 @@ namespace Final
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-            Book se = new Book();
-           Book foundb = se.SearchBook(searchtxt.Text);
+             Book se = new Book();
+             Book foundb = se.SearchBook(searchtxt.Text);
 
             SearchedValue(foundb.Title,foundb.Author,foundb.Edition,foundb.Price,foundb.ISBN);
             //this.SearchedValue(string title, string author, string edition, string price, string isbn)
         }
 
-        public void SearchedValue(string title, string author, string edition, double price, string isbn)
+         public void SearchedValue(string title, string author, string edition, double price, string isbn)
+         {
+             txtTitle.Text = title;
+             txtAuthor.Text = author;
+             txtEdition.Text = edition;
+             txtPrice.Text = Convert.ToString(price);
+             txtIsbn.Text = isbn;
+         }
+            
+
+        
+
+        private void deletebook(object sender, RoutedEventArgs e)
         {
-            txtTitle.Text = title;
-            txtAuthor.Text = author;
-            txtEdition.Text = edition;
-            txtPrice.Text = Convert.ToString(price);
-            txtIsbn.Text = isbn;
+            Book se = new Book();
+           bool result= se.Delete_Book(searchtxt.Text);
+            if (result==true)
+            {
+                AdminHome ah = new AdminHome();
+                ah.Show();
+                this.Close();
+             }
         }
-    } }
+
+        private void updatebook(object sender, RoutedEventArgs e)
+        {
+            Book se = new Book();
+            bool result = se.Update_Book(txtTitle.Text, txtAuthor.Text, txtEdition.Text, Convert.ToDouble(txtPrice.Text), txtIsbn.Text);
+             if(result==true)
+            {
+                AdminHome ah = new AdminHome();
+                ah.Show();
+                this.Close();
+            }
+         }
+    }
+}
 
