@@ -249,7 +249,7 @@ namespace Final
                 {
                     connection.Open();
 
-                    SqlCommand cmd = new SqlCommand("update Books  set Title='" + @title + "',Author='"+@author+"',Edition'"+@edition+"',Price'"+@price+"' Where ISBN='"+ @isbn + "'" , connection);
+                    SqlCommand cmd = new SqlCommand("update Books  set Title=@title,Author=@author,Edition = @edition ,Price = @price Where ISBN='"+  isbn + "'" , connection);
                     cmd.Parameters.AddWithValue("@title", title);
 
                     cmd.Parameters.AddWithValue("@author", author);
