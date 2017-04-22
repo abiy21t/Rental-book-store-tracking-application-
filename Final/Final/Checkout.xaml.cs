@@ -108,5 +108,68 @@ namespace Final
             price = cart.calcPrice(listBox);
             label_totalCost.Content = "$ " + price.ToString();
         }
+
+        private void rect_cancel_btn_Click(object sender, RoutedEventArgs e)//cancel purchase
+        {
+            rect.Visibility = Visibility.Collapsed;
+            rect_cancel_btn.Visibility = Visibility.Collapsed;
+            rect_confirm_btn.Visibility = Visibility.Collapsed;
+            rect_fname.Visibility = Visibility.Collapsed;
+            rect_fname_textBox.Visibility = Visibility.Collapsed;
+            rect_lname.Visibility = Visibility.Collapsed;
+            rect_lname_textBox.Visibility = Visibility.Collapsed;
+            rect_email.Visibility = Visibility.Collapsed;
+            rect_email_textBox.Visibility = Visibility.Collapsed;
+            rect_label.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void button_confirm_Click(object sender, RoutedEventArgs e)//checkout button
+        {
+            rect.Visibility = Visibility.Visible;
+            rect_cancel_btn.Visibility = Visibility.Visible;
+            rect_confirm_btn.Visibility = Visibility.Visible;
+            rect_fname.Visibility = Visibility.Visible;
+            rect_fname_textBox.Visibility = Visibility.Visible;
+            rect_lname.Visibility = Visibility.Visible;
+            rect_lname_textBox.Visibility = Visibility.Visible;
+            rect_email.Visibility = Visibility.Visible;
+            rect_email_textBox.Visibility = Visibility.Visible;
+            rect_label.Visibility = Visibility.Visible;
+        }
+
+        private void rect_confirm_btn_Click(object sender, RoutedEventArgs e)//process order
+        {
+            BookData bd = new BookData();
+            List<string> isbns = listISBNs();
+            foreach(var item in isbns)
+            {
+                bd.RentBook(item);
+            }
+            //MessageBox.Show(listISBNs().toArray().ToString());
+            //listISBNs().ToArray<string>.ToString();
+           // BookData bd = new BookData();
+            //Boolean dbupdated = true;
+            //Boolean processed = bd.addRent(rect_fname_textBox.Text, rect_lname_textBox.Text, label_numberOfBooks.Content + " Books, ISBNs: " + listISBNs().ToString(), Convert.ToDouble(label_totalCost.Content),rect_email_textBox.Text);
+            //if (processed && dbupdated)
+            //{
+                //MessageBox.Show("Order has been processed. Books rented = " + label_numberOfBooks.Content + " for a total price: " + label_totalCost.Content);
+           // }
+        }
+
+        private List<string> listISBNs()//returns a list of all the isbns of the books in cart
+        {
+            List<string> isbns = new List<string>();
+            foreach (var book in listBox.Items)
+            {
+                string isbn;
+                string book2 = book.ToString();
+                int index = book2.LastIndexOf("[");
+                int index2 = book2.LastIndexOf("]");
+                isbn = book2.Substring(index + 1, index2 - index - 1);// + "; ";
+                isbns.Add(isbn);
+            }
+            return isbns;
+        }
     }
 }

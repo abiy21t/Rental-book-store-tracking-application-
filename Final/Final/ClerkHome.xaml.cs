@@ -27,7 +27,7 @@ namespace Final
             InitializeComponent();
             
         }
-
+        public DatabaseConnection conn = new DatabaseConnection();
         private void logout_button_Click(object sender, RoutedEventArgs e)//logout
         {
             BookData bd = new BookData();

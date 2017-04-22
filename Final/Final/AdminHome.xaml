@@ -16,10 +16,8 @@
         <Button x:Name="button2" Content="Add New Admin" HorizontalAlignment="Left" Margin="36,89,0,0" VerticalAlignment="Top" Width="185" Click="button2_Click" Height="39" FontSize="14"/>
         <Label x:Name="label" Content="Admin Home" HorizontalAlignment="Left" Margin="351,17,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Height="46"/>
         <Button x:Name="button3" Content="LogOut" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="89" Height="29" Click="button3_Click" Grid.Column="1"/>
-
-        <Button x:Name="button4" Content="Add Book from OpenLibrary" HorizontalAlignment="Left" Height="43" Margin="36,276,0,0" VerticalAlignment="Top" Width="185" Click="button4_Click" FontSize="14"/>
-        <Button x:Name="button_report" Content="Create Report" HorizontalAlignment="Left" Margin="36,340,0,0" VerticalAlignment="Top" Width="185" Height="43" Click="button_report_Click" FontSize="14"/>
-        <Button x:Name="button6" Content="Update/Delete Books" HorizontalAlignment="Left" Height="46" Margin="36,405,0,0" VerticalAlignment="Top" Width="185" Click="button6_Click"/>
+        <Button x:Name="button_report" Content="Create Report" HorizontalAlignment="Left" Margin="36,273,0,0" VerticalAlignment="Top" Width="185" Height="43" Click="button_report_Click" FontSize="14"/>
+        <Button x:Name="button6" Content="Update/Delete Books" HorizontalAlignment="Left" Height="46" Margin="36,340,0,0" VerticalAlignment="Top" Width="185" Click="button6_Click"/>
 
 
     </Grid>

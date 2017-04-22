@@ -21,7 +21,7 @@ namespace Final
       get
       {
         var db = Environment.CurrentDirectory + @"\MainDB.mdf";
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=" + db + ";Integrated Security=True;";
+        string connectionString = @"Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\MainDB.mdf;Integrated Security = True";
         return connectionString;
       }
     }
@@ -47,5 +47,9 @@ namespace Final
 
 //Nik data source file
 //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nik\Documents\Visual Studio 2015\Projects\Final_Project\Final\Final\MainDB.mdf;Integrated Security = True
+
+//var db = Environment.CurrentDirectory + @"\MainDB.mdf";
+//string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=" + db + ";Integrated Security=True;";
+//        return connectionString;
 
 

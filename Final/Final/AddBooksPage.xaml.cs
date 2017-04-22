@@ -79,6 +79,21 @@ FileAccess.Read);
           //  txtCoverimage.Text = "";
         }
 
-        
+        private void button_Click_2(object sender, RoutedEventArgs e)//add from open library
+        {
+            string isbn = txtIsbn.Text.Replace("-","");
+            Book b = new Book();
+            Boolean okay = b.ISBN_Cheker(isbn);
+            if (okay)
+            {
+                BookData bd = new BookData();
+                OLBook book = bd.AccessOpenLibrary(isbn);
+                txtTitle.Text = book.title;
+            }else
+            {
+                MessageBox.Show("Invalid ISBN-10. Try again.");
+            }
+            
+        }
     }
 }

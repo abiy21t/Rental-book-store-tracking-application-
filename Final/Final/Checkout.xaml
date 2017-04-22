@@ -17,12 +17,22 @@
         <Label x:Name="label2" Content="Price:" HorizontalAlignment="Left" Margin="78,298,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_totalCost" Content="-" HorizontalAlignment="Left" Margin="121,298,0,0" VerticalAlignment="Top"/>
         <Button x:Name="button_cancel" Content="Cancel Checkout" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="99" BorderBrush="Red" Click="button1_Click"/>
-        <Button x:Name="button_confirm" Content="Confirm" HorizontalAlignment="Left" Margin="387,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button_confirm" Content="Confirm" HorizontalAlignment="Left" Margin="387,329,0,0" VerticalAlignment="Top" Width="75" Click="button_confirm_Click"/>
         <Button x:Name="button_add" Content="Add Another" HorizontalAlignment="Left" Margin="345,222,0,0" VerticalAlignment="Top" Width="85" Click="button_add_Click"/>
         <Rectangle x:Name="cancelbox" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="183" Margin="78,59,0,0" Stroke="Black" VerticalAlignment="Top" Width="325" Visibility="Collapsed"/>
         <Label x:Name="label_cancelWarning" Content="Are you sure you want to cancel this sale?" HorizontalAlignment="Left" Margin="121,106,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
         <Button x:Name="button_yes" Content="Yes" HorizontalAlignment="Left" Margin="298,197,0,0" VerticalAlignment="Top" Width="75" Visibility="Collapsed" Click="button_yes_Click"/>
         <Button x:Name="button_no" Content="No" HorizontalAlignment="Left" Margin="111,197,0,0" VerticalAlignment="Top" Width="75" Click="button_no_Click" Visibility="Collapsed"/>
+        <Rectangle x:Name="rect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="339" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="452" Visibility="Collapsed"/>
+        <Label x:Name="rect_label" Content="Enter Customer Data" HorizontalAlignment="Left" Margin="181,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.51" Visibility="Collapsed"/>
+        <Button x:Name="rect_cancel_btn" Content="Cancel" HorizontalAlignment="Left" Margin="34,309,0,0" VerticalAlignment="Top" Width="75" Click="rect_cancel_btn_Click" Visibility="Collapsed"/>
+        <Button x:Name="rect_confirm_btn" Content="Process" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="355,309,0,0" Visibility="Collapsed" Click="rect_confirm_btn_Click"/>
+        <Label x:Name="rect_fname" Content="First Name:" HorizontalAlignment="Left" Margin="78,75,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <Label x:Name="rect_lname" Content="Last Name:" HorizontalAlignment="Left" Margin="80,146,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <Label x:Name="rect_email" Content="Email:" HorizontalAlignment="Left" Margin="80,224,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <TextBox x:Name="rect_fname_textBox" HorizontalAlignment="Left" Height="23" Margin="197,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Collapsed"/>
+        <TextBox x:Name="rect_lname_textBox" HorizontalAlignment="Left" Height="23" Margin="197,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Collapsed"/>
+        <TextBox x:Name="rect_email_textBox" HorizontalAlignment="Left" Height="23" Margin="197,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Collapsed"/>
 
     </Grid>
 </Window>
