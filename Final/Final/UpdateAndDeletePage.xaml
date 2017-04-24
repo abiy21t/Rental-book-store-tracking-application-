@@ -19,7 +19,7 @@
         <Label x:Name="label6" Content="ISBN-10:" HorizontalAlignment="Left" Margin="32,319,0,0" VerticalAlignment="Top" Width="55" Height="29"/>
         <Button x:Name="Updatebt" Content="Update" HorizontalAlignment="Left" Margin="167,383,0,0" VerticalAlignment="Top" Width="68" Height="30" Click="updatebook"/>
         <Button x:Name="Deletebt" Content="Delete" HorizontalAlignment="Left" Margin="259,383,0,0" VerticalAlignment="Top" Width="67" Height="30" Click="deletebook"/>
-        <Button x:Name="clearbt" Content="Clear" HorizontalAlignment="Left" Margin="81,383,0,0" VerticalAlignment="Top" Width="68" Height="30"/>
+        <Button x:Name="clearbt" Content="Clear" HorizontalAlignment="Left" Margin="81,383,0,0" VerticalAlignment="Top" Width="68" Height="30" Click="clear"/>
         <Label x:Name="label" Content="Update/Delete Books Form" HorizontalAlignment="Left" Height="33" Margin="48,10,0,0" VerticalAlignment="Top" Width="296"/>
         <TextBox x:Name="searchtxt" HorizontalAlignment="Left" Height="35" Margin="170,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <Label x:Name="label1_Copy" Content="Search book by ISBN" HorizontalAlignment="Left" Height="35" Margin="14,66,0,0" VerticalAlignment="Top" Width="151" FontSize="14" FontWeight="Bold"/>

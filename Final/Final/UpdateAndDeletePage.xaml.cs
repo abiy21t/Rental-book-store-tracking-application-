@@ -70,6 +70,16 @@ namespace Final
                 this.Close();
             }
          }
+
+        private void clear(object sender, RoutedEventArgs e)
+        {
+            txtTitle.Text = "";
+            txtAuthor.Text = "";
+            txtEdition.Text = "";
+            txtPrice.Text = "";
+            txtIsbn.Text = "";
+        }
     }
-}
+    }
+
 
