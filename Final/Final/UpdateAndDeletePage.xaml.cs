@@ -31,17 +31,18 @@ namespace Final
              Book se = new Book();
              Book foundb = se.SearchBook(searchtxt.Text);
 
-            SearchedValue(foundb.Title,foundb.Author,foundb.Edition,foundb.Price,foundb.ISBN);
+            SearchedValue(foundb.Title,foundb.Author,foundb.Edition,foundb.Price,foundb.ISBN,foundb.Stock.ToString());
             //this.SearchedValue(string title, string author, string edition, string price, string isbn)
         }
 
-         public void SearchedValue(string title, string author, string edition, double price, string isbn)
+         public void SearchedValue(string title, string author, string edition, double price, string isbn, string stock)
          {
              txtTitle.Text = title;
              txtAuthor.Text = author;
              txtEdition.Text = edition;
              txtPrice.Text = Convert.ToString(price);
              txtIsbn.Text = isbn;
+             txtStock.Text = stock;
          }
             
 
@@ -62,7 +63,7 @@ namespace Final
         private void updatebook(object sender, RoutedEventArgs e)
         {
             Book se = new Book();
-            bool result = se.Update_Book(txtTitle.Text, txtAuthor.Text, txtEdition.Text, Convert.ToDouble(txtPrice.Text), txtIsbn.Text);
+            bool result = se.Update_Book(txtTitle.Text, txtAuthor.Text, txtEdition.Text, Convert.ToDouble(txtPrice.Text), txtIsbn.Text, Convert.ToInt32(txtStock.Text));
              if(result==true)
             {
                 AdminHome ah = new AdminHome();
@@ -78,6 +79,13 @@ namespace Final
             txtEdition.Text = "";
             txtPrice.Text = "";
             txtIsbn.Text = "";
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            AdminHome ah = new AdminHome();
+            ah.Show();
+            this.Close();
         }
     }
     }

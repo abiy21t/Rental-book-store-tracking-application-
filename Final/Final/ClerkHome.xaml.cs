@@ -47,8 +47,9 @@ namespace Final
         {
             //get books from database
             BookData bd = new BookData();            
-            string[] books = bd.list_books().ToArray();
+            string[] books = bd.list_books(1).ToArray();
             //display books in listbox
+            listBox.Items.Clear();
             foreach (var book in books)
             {
                 ListBoxItem tb = new ListBoxItem();

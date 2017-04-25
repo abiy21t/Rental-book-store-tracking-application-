@@ -15,10 +15,17 @@ namespace Final
     class BookData
     {
         public DatabaseConnection conn = new DatabaseConnection();
-        public List<string> list_books()//returns list of all the books that are in stock and not in cart
+        public List<string> list_books(int num)//returns list of all the books that are in stock and not in cart
         {
             List<string> books = new List<string>();           
-            string title, author, edition, price,isbn;
+            string title, author, edition, price,isbn,value;
+            if(num == 0)
+            {
+                value = " = 0 ";
+            }else
+            {
+                value = " > 0 ";
+            }
 
             try
             {
@@ -28,7 +35,7 @@ namespace Final
                     {
                         connection.Open();
                     }
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE Stock > 0 and InCart = 0", connection);
+                    SqlCommand cmd = new SqlCommand(String.Format("SELECT * FROM Books WHERE Stock{0} and InCart = 0",value), connection);
                     DataTable dt = new DataTable();
                     SqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);
@@ -383,21 +390,33 @@ namespace Final
 
         }
 
-        public void CreateReport()
+        public List<string> CreateReport()
         {
-            //write books to csv file
-            //connect to database
-
+            List<String> items = new List<string>();
             //books in stock
-
+            items.Add("Books in stock:\n");
+            items.AddRange(list_books(1));
             //books out of stock
-
-            //rented books
-
+            items.Add("\nBooks out of stock:\n");
+            if (list_books(0).Any())
+            {
+                items.AddRange(list_books(0));
+            }else
+            {
+                items.Add("\tAll books in stock!");
+            }
             //overdue books
-
-
-            //show/open report
+            items.Add("\nOverdue rentals:\n");
+            if (ShowLate().Any())
+            {
+                items.AddRange(ShowLate());
+            }
+            else
+            {
+                items.Add("\tNo overdue rentals!");
+            }
+            //return report
+            return items;
         }
 
         public OLBook AccessOpenLibrary(string isbn)
@@ -426,7 +445,7 @@ namespace Final
             return book;
         }
 
-        public Boolean addRent(string fname, string lname, string isbns, double price, string email)
+        public Boolean addRent(string fname, string lname, string isbns, Double price, string email, DateTime today)
         {
             Boolean okay = false;
             try
@@ -437,7 +456,7 @@ namespace Final
                     connection.Open();
 
                     //,'" + @coverimage + "'
-                    SqlCommand cmd = new SqlCommand("INSERT into Rented (FirstName,LastName,BookISBNs,AmountPaid,Email) values('" + @fname + "','" + @lname + "','" + @isbns +"','" + @price + "','" + @email + "')", connection);
+                    SqlCommand cmd = new SqlCommand("INSERT into Rented (FirstName,LastName,BookISBNs,AmountPaid,Email,RentalDate,ReturnDate) values('" + @fname + "','" + @lname + "','" + @isbns +"','" + @price + "','" + @email + "','" + today +"','" + today.AddMonths(6) + "')", connection);
 
                     cmd.Parameters.AddWithValue("@fname", fname);
 
@@ -479,7 +498,47 @@ namespace Final
                     ad.Parameters.AddWithValue("@isbn", isbn);
                     ad.ExecuteNonQuery();
                     //connection.Close();
-                    MessageBox.Show("Done");
+                    //MessageBox.Show("Done");
+                }
+            }
+            catch (Exception x)
+            {
+                throw new Exception("Error connecting to database. \n" + x);
+            }
+        }
+
+        private List<string> ShowLate()
+        {
+            List<string> renters = new List<string>();
+            string fname, lname, email, isbns, date;
+            DateTime today = DateTime.Today;
+
+            try
+            {
+                using (var connection = conn.con)
+                {
+                    if (ConnectionState.Closed == connection.State)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand ad = new SqlCommand("SELECT * from Rented where ReturnDate <= '" + today +"'", connection);// + today
+                    DataTable dt = new DataTable();
+                    SqlDataReader rd = ad.ExecuteReader();
+                    dt.Load(rd);
+                    //dc.con.Close();
+
+                    for (int a = 0; a < dt.Rows.Count; a++)
+                    {
+                        fname = dt.Rows[a]["FirstName"].ToString();
+                        lname = dt.Rows[a]["LastName"].ToString();
+                        email = dt.Rows[a]["Email"].ToString();
+                        isbns = dt.Rows[a]["BookISBNs"].ToString();
+                        date = dt.Rows[a]["ReturnDate"].ToString();                       
+                        renters.Add(lname + ", " + fname + ", " + email +", Books: "+ isbns + "; Due: "+date);
+                    }
+                    //dc.con.Close();
+
+                    return renters;
                 }
             }
             catch (Exception x)

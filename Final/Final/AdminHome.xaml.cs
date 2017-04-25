@@ -54,9 +54,17 @@ namespace Final
 
         private void button_report_Click(object sender, RoutedEventArgs e)//create report button
         {
+            listBox_report.Visibility = Visibility.Visible;
+            button_hide.Visibility = Visibility.Visible;
+            button_copy.Visibility = Visibility.Visible;
             BookData bd = new BookData();
-            bd.CreateReport();
-        
+            bd.ClearCart();
+            List<string> report = new List<string>();
+            report = bd.CreateReport();
+            foreach (var item in report)
+            {
+                listBox_report.Items.Add(item);
+            }
         }
 
         private void button4_Click(object sender, RoutedEventArgs e)//add book through OpenLibrary.org
@@ -78,13 +86,38 @@ namespace Final
             Book se = new Book();
             //se.SearchBook(searchtxt.Text);
 
-                   }
+        }
 
         private void button6_Click(object sender, RoutedEventArgs e)
         {
             UpdateAndDeletePage ud = new UpdateAndDeletePage();
             ud.Show();
             this.Close();
+        }
+
+        private void button_hide_Click(object sender, RoutedEventArgs e)
+        {
+            listBox_report.Visibility = Visibility.Collapsed;
+            button_hide.Visibility = Visibility.Collapsed;
+            button_copy.Visibility = Visibility.Collapsed;
+        }
+
+        private void button4_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            if(listBox_report.SelectedItems.Count >= 1)
+            {
+                string item = listBox_report.SelectedItem.ToString();
+                if (item.Contains("["))
+                {
+                    string isbn;
+                    int index = item.LastIndexOf("[");
+                    int index2 = item.LastIndexOf("]");
+                    isbn = item.Substring(index + 1, index2 - index - 1);
+                    Clipboard.SetText(isbn);
+                }
+            }
+            //Clipboard.SetText("hey");
         }
     }
 }

@@ -239,7 +239,7 @@ namespace Final
                         
         }
         DatabaseConnection conn1 = new DatabaseConnection();
-        public bool Update_Book(string title, string author, string edition, double price, string isbn)
+        public bool Update_Book(string title, string author, string edition, double price, string isbn, int stock)
         {
             bool oky = false;
             try
@@ -249,7 +249,7 @@ namespace Final
                 {
                     connection.Open();
 
-                    SqlCommand cmd = new SqlCommand("update Books  set Title=@title,Author=@author,Edition = @edition ,Price = @price Where ISBN='"+  isbn + "'" , connection);
+                    SqlCommand cmd = new SqlCommand("update Books  set Title=@title,Author=@author,Edition = @edition ,Price = @price, Stock = @stock Where ISBN='"+  isbn + "'" , connection);
                     cmd.Parameters.AddWithValue("@title", title);
 
                     cmd.Parameters.AddWithValue("@author", author);
@@ -257,6 +257,8 @@ namespace Final
                     cmd.Parameters.AddWithValue("@edition", edition);
 
                     cmd.Parameters.AddWithValue("@price", price);
+
+                    cmd.Parameters.AddWithValue("@stock", stock);
 
                     //cmd.Parameters.AddWithValue("@isbn", isbn);
                     cmd.ExecuteNonQuery();
@@ -310,6 +312,7 @@ namespace Final
             string bedition;
             string bprice;
             string bisbn;
+            int bstock;
             Book newbook = new Book();
             try
             {
@@ -333,11 +336,13 @@ namespace Final
                         bedition = (dr["Edition"].ToString());
                         bprice = (dr["Price"].ToString());
                         bisbn = (dr["ISBN"].ToString());
+                        bstock = Convert.ToInt32((dr["Stock"].ToString()));
                         newbook.Title = btitle;
                         newbook.Author = bauthor;
                         newbook.Edition = bedition;
                         newbook.Price = Convert.ToDouble(bprice);
                         newbook.ISBN = bisbn;
+                        newbook._Stock = bstock;
                         
                         conne.con.Close();
                                                 

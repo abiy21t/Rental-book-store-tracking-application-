@@ -8,16 +8,18 @@
         Title="AdminHome" Height="575.319" Width="807.021">
     <Grid Margin="0,0,-8,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="450*"/>
-            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="button" Content="Add Book" HorizontalAlignment="Left" Margin="36,210,0,0" VerticalAlignment="Top" Width="185" Click="button_Click" Height="41" FontSize="14"/>
         <Button x:Name="button1" Content="Add New Clerk" HorizontalAlignment="Left" Margin="36,148,0,0" VerticalAlignment="Top" Width="185" Height="41" Click="button1_Click" FontSize="14"/>
         <Button x:Name="button2" Content="Add New Admin" HorizontalAlignment="Left" Margin="36,89,0,0" VerticalAlignment="Top" Width="185" Click="button2_Click" Height="39" FontSize="14"/>
         <Label x:Name="label" Content="Admin Home" HorizontalAlignment="Left" Margin="351,17,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Height="46"/>
-        <Button x:Name="button3" Content="LogOut" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="89" Height="29" Click="button3_Click" Grid.Column="1"/>
+        <Button x:Name="button3" Content="LogOut" HorizontalAlignment="Left" Margin="695,10,0,0" VerticalAlignment="Top" Width="89" Height="29" Click="button3_Click"/>
         <Button x:Name="button_report" Content="Create Report" HorizontalAlignment="Left" Margin="36,273,0,0" VerticalAlignment="Top" Width="185" Height="43" Click="button_report_Click" FontSize="14"/>
         <Button x:Name="button6" Content="Update/Delete Books" HorizontalAlignment="Left" Height="46" Margin="36,340,0,0" VerticalAlignment="Top" Width="185" Click="button6_Click"/>
+        <ListBox x:Name="listBox_report" HorizontalAlignment="Left" Height="390" Margin="282,89,0,0" VerticalAlignment="Top" Width="485" Visibility="Collapsed"/>
+        <Button x:Name="button_hide" Content="Hide Report" HorizontalAlignment="Left" Margin="282,484,0,0" VerticalAlignment="Top" Width="84" Height="27" Click="button_hide_Click" Visibility="Collapsed"/>
+        <Button x:Name="button_copy" Content="Copy ISBN" HorizontalAlignment="Left" Margin="600,484,0,0" VerticalAlignment="Top" Width="84" Click="button4_Click_1" Visibility="Collapsed" Height="27"/>
 
 
     </Grid>

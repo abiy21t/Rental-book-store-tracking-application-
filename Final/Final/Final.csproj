@@ -99,9 +99,6 @@
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="Data.cs" />
-    <Compile Include="FinalCheckout.xaml.cs">
-      <DependentUpon>FinalCheckout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -137,10 +134,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateUser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FinalCheckout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
