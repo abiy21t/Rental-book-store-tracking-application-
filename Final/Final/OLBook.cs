@@ -8,8 +8,11 @@ namespace Final
 {
     class OLBook
     {
-        public string title { get; set; }
-        public string edition_name { get; set; }
-        public Author authors { get; set; }
+     
+            public string title { get; set; }
+            public string edition_name { get; set; }
+            public Author[] authors { get; set; }
+
+        
     }
 }

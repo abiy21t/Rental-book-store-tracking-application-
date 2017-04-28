@@ -40,8 +40,8 @@ namespace Final
 
         private void button3_Click(object sender, RoutedEventArgs e)//logout button
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
+            LoginPage lp = new LoginPage();
+            lp.Show();
             this.Close();
         }
 

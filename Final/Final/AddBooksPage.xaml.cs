@@ -25,7 +25,7 @@ namespace Final
         {
             InitializeComponent();
         }
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void button_Click_1(object sender, RoutedEventArgs e) //placeholder?
         {
            /* Microsoft.Win32.OpenFileDialog dlg =
 new Microsoft.Win32.OpenFileDialog();
@@ -44,21 +44,30 @@ FileAccess.Read);
         }
         private void button_Click(object sender, RoutedEventArgs e)//register button
         {
-            Book book = new Book();
-            book.Title = txtTitle.Text;
-            book.Author = txtAuthor.Text;
-            book.Edition = txtEdition.Text;
-            book.Price = Convert.ToDouble(txtPrice.Text);
-            book.ISBN = txtIsbn.Text;
-            // book.CoverImage = data;
-
-            //, book.CoverImage
-            Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN, 0, 1);
-            if (added)
+            if(txtTitle.Text != "" && txtAuthor.Text != "" && txtPrice.Text != "")
             {
-                AdminHome ah = new AdminHome();
-                ah.Show();
-                this.Close();
+                Book book = new Book();
+                book.Title = txtTitle.Text;
+                book.Author = txtAuthor.Text;
+                if(txtEdition.Text == "")
+                {
+                    book.Edition = "1st";
+                }else
+                {
+                    book.Edition = txtEdition.Text.Replace("edition", "").Replace("Edition", "").Replace("ed.", "");
+                }               
+                book.Price = Convert.ToDouble(txtPrice.Text);
+                book.ISBN = txtIsbn.Text;
+                Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN, 0, 1);
+                if (added)
+                {
+                    AdminHome ah = new AdminHome();
+                    ah.Show();
+                    this.Close();
+                }
+            }else
+            {
+                MessageBox.Show("Invalid input.");
             }
         }
 
@@ -83,12 +92,19 @@ FileAccess.Read);
         {
             string isbn = txtIsbn.Text.Replace("-","");
             Book b = new Book();
+            //if (isbn)
             Boolean okay = b.ISBN_Cheker(isbn);
             if (okay)
             {
                 BookData bd = new BookData();
                 OLBook book = bd.AccessOpenLibrary(isbn);
-                txtTitle.Text = book.title;
+                if(book.title != null)
+                {
+                    txtTitle.Text = book.title;
+                    txtAuthor.Text = book.authors[0].name;
+                    txtEdition.Text = book.edition_name.Replace("edition", "").Replace("Edition", "").Replace("ed.","");
+                }
+                
             }else
             {
                 MessageBox.Show("Invalid ISBN-10. Try again.");

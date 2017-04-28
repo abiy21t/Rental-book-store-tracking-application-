@@ -9,6 +9,9 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using System.Web;
+//using System.Web.Extensions.dll;
+//using System.Web.Script.Serialization;
 
 namespace Final
 {
@@ -375,7 +378,6 @@ namespace Final
                         }
 
                     }
-                    //dc.con.Close();
                     if (total == 0)
                     {
                         MessageBox.Show("No results found.");
@@ -419,33 +421,43 @@ namespace Final
             return items;
         }
 
-        public OLBook AccessOpenLibrary(string isbn)
+        public OLBook AccessOpenLibrary(string isbn)//this will take a given isbn number and check it against open library
         {
             OLBook book = new OLBook();
             WebClient wc = new WebClient();
             string path = string.Format(@"https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=details&format=json", isbn);
             //connect to api
-            MessageBox.Show(path);
             string data = wc.DownloadString(path);
-            MessageBox.Show(data);
-            return convertToOLBook(data);
-            //read in json
-
-            //convert to book
-
-
-            //return book;
-        }
-
-        public OLBook convertToOLBook(string data)
-        {
-            JObject rawbook = JObject.Parse(data);
-            JToken token = rawbook["details"];
-            OLBook book = token.ToObject<OLBook>();
+            if (data == "{}")
+            {
+                MessageBox.Show("No results found on OpenLibrary.");
+            }else
+            {
+                return convertToOLBook(data, isbn);
+            }
             return book;
         }
 
-        public Boolean addRent(string fname, string lname, string isbns, Double price, string email, DateTime today)
+        public OLBook convertToOLBook(string data, string isbn)//this takes the json and makes an OLBook object
+        {
+            JObject rawbook = JObject.Parse(data);
+            List<JToken> tokens = rawbook[string.Format("ISBN:{0}", isbn)].Children().ToList();
+            OLBook book = new OLBook();
+            int index = 0;
+            foreach (var token in tokens)
+            {
+                if (token.ToString().Contains("\"details\""))// index == 4)
+               {
+                    List<JToken> t = token.Children().ToList(); 
+                    book = t.First().ToObject<OLBook>();
+                    return book;
+                }
+                index += 1;
+            }
+            return book;
+        }
+
+        public Boolean addRent(string fname, string lname, string isbns, Double price, string email, DateTime today)//this adds rental details to the database after checkout
         {
             Boolean okay = false;
             try
@@ -468,7 +480,6 @@ namespace Final
 
                     cmd.Parameters.AddWithValue("@email", email);
 
-                    //conn.con.Open();
                     cmd.ExecuteNonQuery();
                     conn.con.Close();
                     MessageBox.Show("Rental Registered");
@@ -484,7 +495,7 @@ namespace Final
             return okay;
         }
 
-        public void RentBook(string isbn)
+        public void RentBook(string isbn)//this updates the book database when books are rented
         {
             try
             {
@@ -497,8 +508,7 @@ namespace Final
                     SqlCommand ad = new SqlCommand("Update Books SET InCart = 0, Stock = Stock-1  where ISBN ='" + isbn + "'", connection);
                     ad.Parameters.AddWithValue("@isbn", isbn);
                     ad.ExecuteNonQuery();
-                    //connection.Close();
-                    //MessageBox.Show("Done");
+
                 }
             }
             catch (Exception x)
@@ -507,7 +517,7 @@ namespace Final
             }
         }
 
-        private List<string> ShowLate()
+        private List<string> ShowLate()//this returns a list of rentals that are past due
         {
             List<string> renters = new List<string>();
             string fname, lname, email, isbns, date;
@@ -536,7 +546,6 @@ namespace Final
                         date = dt.Rows[a]["ReturnDate"].ToString();                       
                         renters.Add(lname + ", " + fname + ", " + email +", Books: "+ isbns + "; Due: "+date);
                     }
-                    //dc.con.Close();
 
                     return renters;
                 }
