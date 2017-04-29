@@ -8,6 +8,6 @@ namespace Final
 {
     class Author
     {
-        public string name { get; set; }
+        public string name { get; set; }//gets the name from the authors json array
     }
 }

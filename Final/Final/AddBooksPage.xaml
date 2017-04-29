@@ -7,20 +7,22 @@
         mc:Ignorable="d"
         Title="Add Book" Height="485" Width="560">
     <Grid>
-        <Label x:Name="label" Content="Books Registration Form" HorizontalAlignment="Left" Height="38" Margin="21,27,0,0" VerticalAlignment="Top" Width="366" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="label" Content="Books Registration Form" HorizontalAlignment="Left" Height="38" Margin="22,21,0,0" VerticalAlignment="Top" Width="366" FontWeight="Bold" FontSize="14"/>
         <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Height="29" Margin="151,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TabIndex="1"/>
         <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Height="29" Margin="151,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TabIndex="2"/>
         <TextBox x:Name="txtEdition" HorizontalAlignment="Left" Height="29" Margin="151,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TabIndex="3"/>
         <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="29" Margin="151,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TabIndex="4"/>
         <TextBox x:Name="txtIsbn" HorizontalAlignment="Left" Height="29" Margin="151,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TabIndex="5"/>
-        <Button x:Name="button_register" Content="Register Book" HorizontalAlignment="Left" Margin="227,301,0,0" VerticalAlignment="Top" Width="104" Click="button_Click" Height="25" TabIndex="7"/>
-        <Button x:Name="button_clear" Content="Clear Form" HorizontalAlignment="Left" Margin="89,301,0,0" VerticalAlignment="Top" Width="103" Height="25" Click="button1_Click"/>
+        <Button x:Name="button_register" Content="Register Book" HorizontalAlignment="Left" Margin="227,349,0,0" VerticalAlignment="Top" Width="104" Click="button_Click" Height="25" TabIndex="7"/>
+        <Button x:Name="button_clear" Content="Clear Form" HorizontalAlignment="Left" Margin="89,349,0,0" VerticalAlignment="Top" Width="103" Height="25" Click="button1_Click"/>
         <Button x:Name="button_back" Content="Back to Admin Home" HorizontalAlignment="Left" Margin="22,405,0,0" VerticalAlignment="Top" Width="151" Click="button2_Click" Height="25"/>
-        <Label x:Name="label3" Content="Title:" HorizontalAlignment="Left" Margin="89,78,0,0" VerticalAlignment="Top" Width="34"/>
-        <Label x:Name="label1" Content="Author:" HorizontalAlignment="Left" Margin="88,117,0,0" VerticalAlignment="Top" Width="47"/>
-        <Label x:Name="label4" Content="Edition:" HorizontalAlignment="Left" Margin="88,162,0,0" VerticalAlignment="Top" Width="47"/>
-        <Label x:Name="label5" Content="Price:" HorizontalAlignment="Left" Margin="98,204,0,0" VerticalAlignment="Top" Width="37"/>
-        <Label x:Name="label6" Content="ISBN-10:" HorizontalAlignment="Left" Margin="80,248,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="label3" Content="Title:" HorizontalAlignment="Left" Margin="109,78,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label x:Name="label1" Content="Author:" HorizontalAlignment="Left" Margin="96,117,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label x:Name="label4" Content="Edition:" HorizontalAlignment="Left" Margin="96,162,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label x:Name="label5" Content="Price:" HorizontalAlignment="Left" Margin="106,204,0,0" VerticalAlignment="Top" Width="37"/>
+        <Label x:Name="label6" Content="ISBN-10:" HorizontalAlignment="Left" Margin="88,248,0,0" VerticalAlignment="Top" Width="55"/>
         <Button x:Name="button" Content="Get From Open Library" HorizontalAlignment="Left" Margin="368,252,0,0" VerticalAlignment="Top" Width="154" Height="25" Click="button_Click_2"/>
+        <Label x:Name="label7" Content="Stock:" HorizontalAlignment="Left" Margin="88,293,0,0" VerticalAlignment="Top" Width="55"/>
+        <TextBox x:Name="txtStock" HorizontalAlignment="Left" Height="29" Margin="151,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TabIndex="5"/>
     </Grid>
 </Window>

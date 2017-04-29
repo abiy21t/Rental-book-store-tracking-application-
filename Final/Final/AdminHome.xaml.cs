@@ -26,89 +26,69 @@ namespace Final
 
         private void button_Click(object sender, RoutedEventArgs e)//add book button
         {
-            AddBooksPage bk = new AddBooksPage();
+            AddBooksPage bk = new AddBooksPage();//opens the add book page
             bk.Show();
             this.Close();
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)//add admin button
         {
-            AddNewAdmin ad = new AddNewAdmin();
+            AddNewAdmin ad = new AddNewAdmin();//opens the add admin page
             ad.Show();
             this.Close();
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)//logout button
         {
-            LoginPage lp = new LoginPage();
+            LoginPage lp = new LoginPage();//return user to login page
             lp.Show();
             this.Close();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)//add clerk/new user
         {
-            CreateUser cu = new CreateUser();
+            CreateUser cu = new CreateUser();//opens add user/clerk page
             cu.Show();
             this.Close();
         }
 
         private void button_report_Click(object sender, RoutedEventArgs e)//create report button
         {
+            //show listbox
             listBox_report.Visibility = Visibility.Visible;
             button_hide.Visibility = Visibility.Visible;
             button_copy.Visibility = Visibility.Visible;
             BookData bd = new BookData();
+            //clear cart so all books in system are shown
             bd.ClearCart();
             List<string> report = new List<string>();
-            report = bd.CreateReport();
-            foreach (var item in report)
+            report = bd.CreateReport();//create the report
+            foreach (var item in report)//put report into the listbox
             {
                 listBox_report.Items.Add(item);
             }
         }
 
-        private void button4_Click(object sender, RoutedEventArgs e)//add book through OpenLibrary.org
+        private void button6_Click(object sender, RoutedEventArgs e)//update/delete button
         {
-            BookData bd = new BookData();
-            //show isbn entry field
-
-            //collect isbn and check if valid
-                //string isbn = someTextBox
-            //if valid send to openlibrary api
-                //bd.AccessOpenLibrary(isbn); <-- this will return a book
-            //add returned book to database <-- maybe we can move this step to AccessOpenLibrary()
-
-        }
-
-
-        private void button5_Click(object sender, RoutedEventArgs e)
-        {
-            Book se = new Book();
-            //se.SearchBook(searchtxt.Text);
-
-        }
-
-        private void button6_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateAndDeletePage ud = new UpdateAndDeletePage();
+            UpdateAndDeletePage ud = new UpdateAndDeletePage();//opens update and delete page
             ud.Show();
             this.Close();
         }
 
-        private void button_hide_Click(object sender, RoutedEventArgs e)
+        private void button_hide_Click(object sender, RoutedEventArgs e)//hides report
         {
             listBox_report.Visibility = Visibility.Collapsed;
             button_hide.Visibility = Visibility.Collapsed;
             button_copy.Visibility = Visibility.Collapsed;
         }
 
-        private void button4_Click_1(object sender, RoutedEventArgs e)
+        private void button4_Click_1(object sender, RoutedEventArgs e)//copys the selected items ISBN to clipboard
         {
-
             if(listBox_report.SelectedItems.Count >= 1)
             {
                 string item = listBox_report.SelectedItem.ToString();
-                if (item.Contains("["))
+                if (item.Contains("["))//make sure selected item contains ISBN
                 {
                     string isbn;
                     int index = item.LastIndexOf("[");
@@ -117,7 +97,6 @@ namespace Final
                     Clipboard.SetText(isbn);
                 }
             }
-            //Clipboard.SetText("hey");
         }
     }
 }

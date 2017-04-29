@@ -13,8 +13,7 @@ namespace Final
     {
         List<string> books = new List<string>();
 
-
-        public double calcPrice(ListBox items)
+        public double calcPrice(ListBox items)//calculate the total price of the cart
         {
             double price = 0;
             double total = 0;
@@ -40,16 +39,6 @@ namespace Final
             total = Math.Round(total, 2);
             return total;
         }
-
-        public void rentCart(List<Book> books)
-        {
-            //connect to database
-
-            //add renter info and collect each books isbn
-
-            //decrease each books stock
-        }
     }
-
     
 }

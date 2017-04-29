@@ -98,7 +98,6 @@
     </Compile>
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="Book.cs" />
-    <Compile Include="Data.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

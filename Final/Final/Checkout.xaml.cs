@@ -26,12 +26,13 @@ namespace Final
         public Checkout()
         {
             InitializeComponent();
-            fillListBox();
-            checkoutTotals();
+            fillListBox();//fills the listbox with the books in the cart
+            checkoutTotals();//fills the checkout amounts price and number of books
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)//cancel checkout
         {
+            //show cancel verification
             cancelbox.Visibility = Visibility.Visible;
             button_no.Visibility = Visibility.Visible;
             button_yes.Visibility = Visibility.Visible;
@@ -40,6 +41,7 @@ namespace Final
 
         private void button_no_Click(object sender, RoutedEventArgs e)//do not cancel checkout
         {
+            //hide cancel verification
             cancelbox.Visibility = Visibility.Collapsed;
             button_no.Visibility = Visibility.Collapsed;
             button_yes.Visibility = Visibility.Collapsed;
@@ -99,7 +101,7 @@ namespace Final
             }
         }
 
-        private void checkoutTotals()
+        private void checkoutTotals()//caculates the total price of the cart
         {
             //calculate number of books for current order
             label_numberOfBooks.Content = listBox.Items.Count.ToString();
@@ -143,14 +145,13 @@ namespace Final
             }else
             {
                 MessageBox.Show("You must have some items in the cart before you can checkout!");
-            }
-            
+            }        
         }
 
         private void rect_confirm_btn_Click(object sender, RoutedEventArgs e)//processes the  order
         {
             string value = rect_email_textBox.Text;
-            Regex rg = new Regex("[a-zA-Z0-9]{1,25}@[a-zA-Z0-9]{1,25}.[a-zA-Z]{2,3}");
+            Regex rg = new Regex("[a-zA-Z0-9]{1,25}@[a-zA-Z0-9]{1,25}.[a-zA-Z]{2,3}");//valid email layout
             DateTime today = DateTime.Today;
             if (rg.IsMatch(value) && (value.Contains(".com") || value.Contains(".net") || value.Contains(".edu") || value.Contains(".gov") || value.Contains(".org")) && value != "")
             {

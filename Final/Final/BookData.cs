@@ -10,14 +10,14 @@ using System.Windows;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Web;
-//using System.Web.Extensions.dll;
-//using System.Web.Script.Serialization;
+
 
 namespace Final
 {
     class BookData
     {
         public DatabaseConnection conn = new DatabaseConnection();
+
         public List<string> list_books(int num)//returns list of all the books that are in stock and not in cart
         {
             List<string> books = new List<string>();           
@@ -29,7 +29,6 @@ namespace Final
             {
                 value = " > 0 ";
             }
-
             try
             {
                 using (var connection = conn.con)
@@ -42,7 +41,6 @@ namespace Final
                     DataTable dt = new DataTable();
                     SqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);
-
                     for (int a = 0; a < dt.Rows.Count; a++)
                     {
                         title = dt.Rows[a]["Title"].ToString();
@@ -52,23 +50,18 @@ namespace Final
                         isbn = dt.Rows[a]["ISBN"].ToString();
                         books.Add(title + " " + edition + " edition, by " + author + " for $" + price + " -ISBN[" + isbn + "]");
                     }
-                    //con.con.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex);
             }
-
             return books;
-
         }
 
         public Book Search_Book(string ISBN)//searches for books by isbn returns book class
         {
-            //DatabaseConnection dc = new DatabaseConnection();
             ISBN = ISBN.Replace("-", "");
-            //string title, author, edition, isbn;
             double price;
             int inCart, stock;
             try
@@ -106,14 +99,11 @@ namespace Final
                         return b;
                     }
                 }
-
-
             }
             catch (Exception x)
             {
                 throw new Exception("Error connecting to database. \n" + x);
-            }
-            
+            }            
         }
 
         public Boolean ADD_Book(string title, string author, string edition, double price, string isbn, int inCart, int stock)//adds book to database
@@ -123,30 +113,18 @@ namespace Final
             {
                 using (var connection = conn.con)
                 {
-                    //DatabaseConnection conn = new DatabaseConnection();
-                    //,'" + @coverimage + "'
-                    SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,InCart,Stock) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + inCart + "','" + @stock + "')", conn.con);
-
+                    //SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,InCart,Stock) values('" + @title + "','" + @author + "',@edition,'" + @price + "','" + @isbn + "','" + inCart + "','" + @stock + "')", conn.con);
+                    SqlCommand cmd = new SqlCommand("insert into Books (Title,Author,Edition,Price,ISBN,InCart,Stock) values(@title,@author,@edition,@price,@isbn,@inCart,@stock)", connection);
                     cmd.Parameters.AddWithValue("@title", title);
-
                     cmd.Parameters.AddWithValue("@author", author);
-
                     cmd.Parameters.AddWithValue("@edition", edition);
-
                     cmd.Parameters.AddWithValue("@price", price);
-
                     cmd.Parameters.AddWithValue("@isbn", isbn);
                     cmd.Parameters.AddWithValue("@inCart", inCart);
                     cmd.Parameters.AddWithValue("@stock", stock);
-
-                    // cmd.Parameters.AddWithValue("@covrimage", coverimage);
-
-                    connection.Open();
                     cmd.ExecuteNonQuery();
-                    connection.Close();
                     MessageBox.Show("Book Registered");
                     okay = true;
-
                 }
             }
             catch (Exception ex)
@@ -160,8 +138,6 @@ namespace Final
         {
             List<string> books = new List<string>();
             string title, author, edition, price, isbn;
-            //DatabaseConnection con = new DatabaseConnection();
-
             try
             {
                 using (var connection = conn.con)
@@ -170,11 +146,10 @@ namespace Final
                     {
                         connection.Open();
                     }
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE InCart = 1", connection); //Title, Author, Price, ISBN
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Books WHERE InCart = 1", connection);
                     DataTable dt = new DataTable();
                     SqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);
-
                     for (int a = 0; a < dt.Rows.Count; a++)
                     {
                         title = dt.Rows[a]["Title"].ToString();
@@ -191,19 +166,15 @@ namespace Final
             {
                 MessageBox.Show("Error " + ex);
             }
-
             return books;
-
         }
 
         public void updateCart(string book, int num)//if num = 0 remove from cart, 1 = add to cart
         {
             string isbn;
-
             int index = book.LastIndexOf("[");
             int index2 = book.LastIndexOf("]");
             isbn = book.Substring(index + 1, index2 - index - 1);
-            //DatabaseConnection dc = new DatabaseConnection();
             try
             {
                 using (var connection = conn.con)
@@ -214,7 +185,6 @@ namespace Final
                     }
                     SqlCommand ad = new SqlCommand(String.Format("Update Books SET InCart = {0} where ISBN ='" + isbn + "'", num.ToString()), connection);
                     ad.ExecuteNonQuery();
-                    connection.Close();
                 }
             }
             catch (Exception x)
@@ -225,10 +195,8 @@ namespace Final
 
         public string Search_Book2(string ISBN)//searches books by ISBN returns string
         {
-            //DatabaseConnection dc = new DatabaseConnection();
             ISBN = ISBN.Replace("-", "");
             string title, author, edition, isbn,book, price;
-
             try
             {
                 using (var connection = conn.con)
@@ -241,7 +209,6 @@ namespace Final
                     DataTable dt = new DataTable();
                     SqlDataReader rd = ad.ExecuteReader();
                     dt.Load(rd);
-                    //connection.Close();
                     if (dt.Rows.Count > 0)
                     {
                         title = dt.Rows[0]["Title"].ToString();
@@ -254,28 +221,23 @@ namespace Final
                     }
                     else
                     {
-                        //Book b = new Book();
                         MessageBox.Show("No results found.");
                         return "";
                     }
-
                 }
             }
             catch (Exception x)
             {
                 throw new Exception("Error connecting to database. \n" + x);
             }
-
         }
 
 
         public List<string> Search_Title(string query)//searchs books and returns books containing search phrase query
         {
-            //DatabaseConnection dc = new DatabaseConnection();
             string title, author, edition, isbn, price;
             List<string> books = new List<string>();
             int total = 0;
-
             try
             {
                 using (var connection = conn.con)
@@ -288,11 +250,8 @@ namespace Final
                     DataTable dt = new DataTable();
                     SqlDataReader rd = ad.ExecuteReader();
                     dt.Load(rd);
-                    //dc.con.Close();
-
                     for (int a = 0; a < dt.Rows.Count; a++)
                     {
-
                         title = dt.Rows[a]["Title"].ToString();
                         if (title.ToUpper().Contains(query.ToUpper()))
                         {
@@ -303,9 +262,7 @@ namespace Final
                             isbn = dt.Rows[a]["ISBN"].ToString();
                             books.Add(title + " " + edition + " edition, by " + author + " for $" + price + " -ISBN[" + isbn + "]");
                         }
-
                     }
-                    //dc.con.Close();
                     if (total == 0)
                     {
                         MessageBox.Show("No results found.");
@@ -317,12 +274,10 @@ namespace Final
             {
                 throw new Exception("Error connecting to database. \n" + x);
             }
-
         }
 
         public void ClearCart()//removes all books from cart (InCart = 0/False)
         {
-            //DatabaseConnection dc = new DatabaseConnection();
             try
             {
                 using (var connection = conn.con)
@@ -333,7 +288,6 @@ namespace Final
                     }
                     SqlCommand ad = new SqlCommand("Update Books SET InCart = 0", connection);
                     ad.ExecuteNonQuery();
-                    //dc.con.Close();
                 }
             }
             catch (Exception x)
@@ -344,11 +298,9 @@ namespace Final
 
         public List<string> Search_Author(string query)//searchs books and returns books containing search phrase query
         {
-            //DatabaseConnection dc = new DatabaseConnection();
             string title, author, edition, isbn, price;
             List<string> books = new List<string>();
             int total = 0;
-
             try
             {
                 using (var connection = conn.con)
@@ -361,11 +313,8 @@ namespace Final
                     DataTable dt = new DataTable();
                     SqlDataReader rd = ad.ExecuteReader();
                     dt.Load(rd);
-                    //dc.con.Close();
-
                     for (int a = 0; a < dt.Rows.Count; a++)
                     {
-
                         author = dt.Rows[a]["Author"].ToString();
                         if (author.ToUpper().Contains(query.ToUpper()))
                         {
@@ -376,7 +325,6 @@ namespace Final
                             isbn = dt.Rows[a]["ISBN"].ToString();
                             books.Add(title + " " + edition + " edition, by " + author + " for $" + price + " -ISBN[" + isbn + "]");
                         }
-
                     }
                     if (total == 0)
                     {
@@ -389,10 +337,9 @@ namespace Final
             {
                 throw new Exception("Error connecting to database. \n" + x);
             }
-
         }
 
-        public List<string> CreateReport()
+        public List<string> CreateReport()//generates a report of the books in the system and overdue rentals
         {
             List<String> items = new List<string>();
             //books in stock
@@ -428,7 +375,7 @@ namespace Final
             string path = string.Format(@"https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=details&format=json", isbn);
             //connect to api
             string data = wc.DownloadString(path);
-            if (data == "{}")
+            if (data == "{}")//if openlibrary doesn't have the book
             {
                 MessageBox.Show("No results found on OpenLibrary.");
             }else
@@ -443,16 +390,14 @@ namespace Final
             JObject rawbook = JObject.Parse(data);
             List<JToken> tokens = rawbook[string.Format("ISBN:{0}", isbn)].Children().ToList();
             OLBook book = new OLBook();
-            int index = 0;
             foreach (var token in tokens)
             {
-                if (token.ToString().Contains("\"details\""))// index == 4)
+                if (token.ToString().Contains("\"details\""))//this section contains the details about the book
                {
                     List<JToken> t = token.Children().ToList(); 
                     book = t.First().ToObject<OLBook>();
                     return book;
                 }
-                index += 1;
             }
             return book;
         }
@@ -466,25 +411,18 @@ namespace Final
                 using (var connection = conn.con)
                 {
                     connection.Open();
-
-                    //,'" + @coverimage + "'
-                    SqlCommand cmd = new SqlCommand("INSERT into Rented (FirstName,LastName,BookISBNs,AmountPaid,Email,RentalDate,ReturnDate) values('" + @fname + "','" + @lname + "','" + @isbns +"','" + @price + "','" + @email + "','" + today +"','" + today.AddMonths(6) + "')", connection);
-
+                    //SqlCommand cmd = new SqlCommand("INSERT into Rented (FirstName,LastName,BookISBNs,AmountPaid,Email,RentalDate,ReturnDate) values('" + @fname + "','" + @lname + "','" + @isbns +"','" + @price + "','" + @email + "','" + today +"','" + today.AddMonths(6) + "')", connection);
+                    SqlCommand cmd = new SqlCommand("INSERT into Rented (FirstName,LastName,BookISBNs,AmountPaid,Email,RentalDate,ReturnDate) values(@fname,@lname,@isbns,@price,@email,@today,@return)", connection);
                     cmd.Parameters.AddWithValue("@fname", fname);
-
                     cmd.Parameters.AddWithValue("@lname", lname);
-
                     cmd.Parameters.AddWithValue("@isbns", isbns);
-
                     cmd.Parameters.AddWithValue("@price", price);
-
                     cmd.Parameters.AddWithValue("@email", email);
-
+                    cmd.Parameters.AddWithValue("@today", today);
+                    cmd.Parameters.AddWithValue("@return", today.AddMonths(6));
                     cmd.ExecuteNonQuery();
-                    conn.con.Close();
                     MessageBox.Show("Rental Registered");
                     okay = true;
-
                 }
             }
             catch (Exception ex)
@@ -505,10 +443,9 @@ namespace Final
                     {
                         connection.Open();
                     }
-                    SqlCommand ad = new SqlCommand("Update Books SET InCart = 0, Stock = Stock-1  where ISBN ='" + isbn + "'", connection);
+                    SqlCommand ad = new SqlCommand("Update Books SET InCart = 0, Stock = Stock-1  where ISBN = @isbn", connection);//empty cart and decrease stock
                     ad.Parameters.AddWithValue("@isbn", isbn);
                     ad.ExecuteNonQuery();
-
                 }
             }
             catch (Exception x)
@@ -522,7 +459,6 @@ namespace Final
             List<string> renters = new List<string>();
             string fname, lname, email, isbns, date;
             DateTime today = DateTime.Today;
-
             try
             {
                 using (var connection = conn.con)
@@ -535,8 +471,6 @@ namespace Final
                     DataTable dt = new DataTable();
                     SqlDataReader rd = ad.ExecuteReader();
                     dt.Load(rd);
-                    //dc.con.Close();
-
                     for (int a = 0; a < dt.Rows.Count; a++)
                     {
                         fname = dt.Rows[a]["FirstName"].ToString();

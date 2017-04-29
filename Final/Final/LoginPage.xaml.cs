@@ -30,7 +30,7 @@ namespace Final
             log.UserName = txtuname.Text;
             log.Password = passwordBox.Password;
             bool auth = log.AdminLogin(log.UserName, log.Password);
-            if(txtuname.Text == "" || passwordBox.Password == "")
+            if(txtuname.Text == "" || passwordBox.Password == "")//display errors
             {
                 if (txtuname.Text == "")
                 {
@@ -54,41 +54,35 @@ namespace Final
             {
                 username.Content = "";
                 password.Content = "";
-                if (radAdmin.IsChecked == true)
+                if (radAdmin.IsChecked == true)//admin login
                 {
-
-
                     if (auth == true)
                     {
+                        //send user to admin homepage
                         AdminHome adh = new AdminHome();
                         adh.Show();
                         this.Close();
                         //MessageBox.Show("user name and password correct");
                     }
-                    else
+                    else//invalid admin login credentials
                     {
-
                         username.Content = "";
                         password.Content = "";
                         nameandpassword.Content = ("Username or Password incorrect.");
                     }
                 }
-
-                else if (radUser.IsChecked == true)
+                else if (radUser.IsChecked == true)//user/clerk login
                 {
-
                     log.UserName = txtuname.Text;
                     log.Password = passwordBox.Password;
                     Boolean authorized = log.UserLogin(log.UserName, log.Password);
                     if (authorized)
                     {
-                        //BookData bd = new BookData();
                         ClerkHome ch = new ClerkHome();
-                        //ch.Closed() += bd.ClearCart();
                         ch.Show();
                         this.Close();
                     }
-                    else
+                    else//invalid clerk login credentials
                     {
                         nameandpassword.Content = ("Username or Password incorrect.");
                     }

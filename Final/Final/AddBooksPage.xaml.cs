@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,58 +21,77 @@ namespace Final
     /// </summary>
     public partial class AddBooksPage : Window
     {
-        //public byte[] data;
         public AddBooksPage()
         {
             InitializeComponent();
         }
-        private void button_Click_1(object sender, RoutedEventArgs e) //placeholder?
-        {
-           /* Microsoft.Win32.OpenFileDialog dlg =
-new Microsoft.Win32.OpenFileDialog();
-            dlg.ShowDialog();
+//        private void button_Click_1(object sender, RoutedEventArgs e) //placeholder?
+//        {
+//           /* Microsoft.Win32.OpenFileDialog dlg =
+//new Microsoft.Win32.OpenFileDialog();
+//            dlg.ShowDialog();
 
-            FileStream fs = new FileStream(dlg.FileName, FileMode.Open,
-FileAccess.Read);
+//            FileStream fs = new FileStream(dlg.FileName, FileMode.Open,
+//FileAccess.Read);
 
-            byte[] data = new byte[fs.Length];
-            fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
+//            byte[] data = new byte[fs.Length];
+//            fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
 
-            fs.Close();
-            ImageSourceConverter imgs = new ImageSourceConverter();
-            imagebox.SetValue(Image.SourceProperty, imgs.
-            ConvertFromString(dlg.FileName.ToString()));*/
-        }
+//            fs.Close();
+//            ImageSourceConverter imgs = new ImageSourceConverter();
+//            imagebox.SetValue(Image.SourceProperty, imgs.
+//            ConvertFromString(dlg.FileName.ToString()));*/
+//        }
         private void button_Click(object sender, RoutedEventArgs e)//register button
         {
-            if(txtTitle.Text != "" && txtAuthor.Text != "" && txtPrice.Text != "")
+            Book book = new Book();
+            int stock;
+            Double price;
+            Boolean okay = book.ISBN_Cheker(txtIsbn.Text);//check isbn is valid
+            Boolean testPrice = Double.TryParse(txtPrice.Text, out price);//check price is valid
+            Boolean testStock = Int32.TryParse(txtStock.Text, out stock);//check stock is a valid number
+            if (txtTitle.Text != "" && txtAuthor.Text != "" && txtPrice.Text != "" && txtStock.Text != "" && txtIsbn.Text != "")//make sure no fields are empty
             {
-                Book book = new Book();
-                book.Title = txtTitle.Text;
-                book.Author = txtAuthor.Text;
-                if(txtEdition.Text == "")
+                string title, author;
+                title = Regex.Replace(txtTitle.Text, @"[^\w\d\s]+", "");//remove any special characters 
+                author = Regex.Replace(txtAuthor.Text, @"[^\w\d\s]+", "");
+                if (okay && testPrice && testStock)//if everything is valid
+                    {
+                        book.Title = title;
+                        book.Author = author;
+                        if (txtEdition.Text == "")//if no edition is entered it will be considered 1st edition
+                        {
+                            book.Edition = "1st";
+                        }
+                        else
+                        {
+                            book.Edition = txtEdition.Text.Replace("edition", "").Replace("Edition", "").Replace("ed.", "");//removes edition
+                        }
+                        book.Price = Convert.ToDouble(txtPrice.Text);
+                        book.ISBN = txtIsbn.Text;
+                        Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN, 0, stock);//adds book to database
+                        if (added)//if add is successfull
+                        {
+                            AdminHome ah = new AdminHome();
+                            ah.Show();
+                            this.Close();
+                        }
+                    }
+                    else if (!testPrice)//if price is invalid
+                    {
+                        MessageBox.Show("Invalid Price. Do not include \"$\".");
+                    }
+                    else if (!testStock)//if stock entry is invalid
+                    {
+                        MessageBox.Show("Invalid stock. Whole Numbers only!");
+                    }
+                }else//if fields are empty
                 {
-                    book.Edition = "1st";
-                }else
-                {
-                    book.Edition = txtEdition.Text.Replace("edition", "").Replace("Edition", "").Replace("ed.", "");
-                }               
-                book.Price = Convert.ToDouble(txtPrice.Text);
-                book.ISBN = txtIsbn.Text;
-                Boolean added = book.ADD_Book(book.Title, book.Author, book.Edition, book.Price, book.ISBN, 0, 1);
-                if (added)
-                {
-                    AdminHome ah = new AdminHome();
-                    ah.Show();
-                    this.Close();
+                    MessageBox.Show("Make sure all fields are filled.");
                 }
-            }else
-            {
-                MessageBox.Show("Invalid input.");
-            }
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)//back button
+        private void button2_Click(object sender, RoutedEventArgs e)//back button -- return to admin homepage
         {
             AdminHome ad = new AdminHome();
             ad.Show();
@@ -85,6 +105,7 @@ FileAccess.Read);
             txtEdition.Text = "";
             txtPrice.Text = "";
             txtIsbn.Text = "";
+            txtStock.Text = "";
           //  txtCoverimage.Text = "";
         }
 
@@ -92,17 +113,19 @@ FileAccess.Read);
         {
             string isbn = txtIsbn.Text.Replace("-","");
             Book b = new Book();
-            //if (isbn)
-            Boolean okay = b.ISBN_Cheker(isbn);
+            Boolean okay = b.ISBN_Cheker(isbn);//check isbn is valid
             if (okay)
             {
                 BookData bd = new BookData();
                 OLBook book = bd.AccessOpenLibrary(isbn);
-                if(book.title != null)
+                if(book.title != null)//if a book was found
                 {
                     txtTitle.Text = book.title;
                     txtAuthor.Text = book.authors[0].name;
-                    txtEdition.Text = book.edition_name.Replace("edition", "").Replace("Edition", "").Replace("ed.","");
+                    if(book.edition_name != null)//if edition was included in json
+                    {
+                        txtEdition.Text = book.edition_name.Replace("edition", "").Replace("Edition", "").Replace("ed.", "");
+                    }                    
                 }
                 
             }else

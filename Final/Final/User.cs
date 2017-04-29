@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Data;
+
 namespace Final
 {
     public class User
@@ -17,9 +19,6 @@ namespace Final
         private string _password;
         private string _email;
         private long _phoneNum;
-        
-        
-        //private date _birthday;
 
         public string Firstname
         {
@@ -36,16 +35,10 @@ namespace Final
                 else if (value == "")
                 {
                     MessageBox.Show("First name field required");
-                    //throw new Exception("hello");
-                    //throw new InvalidNameException("hello");
-                    //throw new ArgumentException("hello");
-                    //how can we throw an error so it stops at this message?
                 }
                 else
                 {
                     MessageBox.Show("Name cannot contain number");
-
-                    //throw new InvalidNameException("First name cannot contain numbers");
                 }
             }
         }
@@ -57,15 +50,6 @@ namespace Final
             }
             set
             {
-
-                //if (value.All(char.IsLetter))
-                //{
-                //    _lname = value;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Last Name connot contain numbers ");
-
                 if (value.All(char.IsLetter) && value != "")
                 {
                     _lname = value;
@@ -76,8 +60,7 @@ namespace Final
                 }
                 else
                 {
-                    throw new InvalidNameException("Last name cannot contain numbers");
-
+                    MessageBox.Show("Last name cannot contain numbers");
                 }
             }
         }
@@ -96,8 +79,7 @@ namespace Final
                 else
                 {
                     _username = value;
-                }
-                
+                }                
             }
         }
         public string Password
@@ -112,15 +94,14 @@ namespace Final
                 {
                     MessageBox.Show("Password field required");
                 }
-                else if (value.Length > 5 || value.Length < 25)
+                else if (value.Length > 5 && value.Length < 25)
                 {
                     _password = value;
                 }
                 
                 else
                 {
-                    MessageBox.Show("Password length should be at least 6");
-                    
+                    MessageBox.Show("Password length should be at least 6");                    
                 }
             }
         }
@@ -144,8 +125,7 @@ namespace Final
                 else
                 {
                     MessageBox.Show("Please enter email xxxxxxx@xxxxx.xxx format");
-                }
-                
+                }                
             }
         }
 
@@ -157,92 +137,83 @@ namespace Final
             }
             set
             {
-
-                //string log = Convert.ToString(value);
-                //Regex rg = new Regex("^[0-9]{3}-[0-9]{3}-[0-9]{4}$");
-                //string log = Convert.ToString(value);
-              //  if (rg.IsMatch(log))
-                ////{
                     _phoneNum = value;
-                //}
-                //else
-                //{
-                  //  MessageBox.Show("Please enter phone number by 999-999-9999 format");
-                //}
-
-                    //_phoneNum = value;
-  
             }
         }
 
-        public Boolean Add_User(string uname, string pass, string fname, string lname, string email, long phone)
+        public Boolean Add_User(string uname, string pass, string fname, string lname, string email, long phone)//adds clerk account to user database
         {
             Boolean done = false;
+            done = get_User_by_username(uname);//checks if username already exists
+            if (!done)
+            {
+                done = false;
+                try
+                {
+                    using (var connection = conn.con)
+                    {
+                        if (ConnectionState.Closed == connection.State)
+                        {
+                            connection.Open();
+                        }
+                        //SqlCommand cmd = new SqlCommand("INSERT INTO Users (Username,Password,FirstName,LastName,Email,PhoneNumber) values('" + @uname + "','" + @pass + "','" + @fname + "','" + @lname + "','" + @email + "','" + @phone + "')", connection);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Users (Username,Password,FirstName,LastName,Email,PhoneNumber) values(@uname,@pass,@fname,@lname,@email,@phone)", connection);
+                        cmd.Parameters.AddWithValue("@fname", fname);
+                        cmd.Parameters.AddWithValue("@lname", lname);
+                        cmd.Parameters.AddWithValue("@uname", uname);
+                        cmd.Parameters.AddWithValue("@pass", pass);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("User has been added");
+                        done = true;
+                        return done;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Bad data detected. Account was not created.");// + ex);
+
+                }
+                return done;
+            }else
+            {
+                MessageBox.Show("That username is already taken." );
+                return false;
+            }
+        }
+
+        public bool get_User_by_username(string username)//checks if username already exists in user database
+        {
             try
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO Users (Username,Password,FirstName,LastName,Email,PhoneNumber) values('" + @uname + "','" + @pass + "','" + @fname +"','" + @lname + "','" + @email + "','" + @phone + "')", conn.con);
-
-                cmd.Parameters.AddWithValue("@fname", fname);
-
-                cmd.Parameters.AddWithValue("@lname", lname);
-
-                cmd.Parameters.AddWithValue("@uname", uname);
-
-                cmd.Parameters.AddWithValue("@password", pass);
-
-                cmd.Parameters.AddWithValue("@email", email);
-
-                cmd.Parameters.AddWithValue("@phone", phone);
-
-                conn.con.Open();
-                //cmd.Connection = conn.con;
-                cmd.ExecuteNonQuery();
-                conn.con.Close();
-                MessageBox.Show("User has been added");
-                done = true;
-                return done;
-
+                using (var connection = conn.con)
+                {
+                    if (ConnectionState.Closed == connection.State)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand ad = new SqlCommand("select * from Users where Username ='" + username + "'  ", connection);
+                    DataTable dt = new DataTable();
+                    SqlDataReader rd = ad.ExecuteReader();
+                    dt.Load(rd);
+                    if (dt.Rows.Count == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
-            catch (Exception ex)
+            catch (Exception x)
             {
-                MessageBox.Show("error" + ex);
-
+                throw new Exception("error" + x);
             }
-            return done;
+
         }
 
-
-
-        /*public User(string fn, string ln, string un, string pass, string email, int pn)
-        {
-            this._fname = fn;
-            this._lname = ln;
-            this._password = pass;
-            this._username = un;
-            this._phoneNum = pn;
-        }
-        */
-        //are either of these setups correct for professional coding? or should all of this be done through database?
-        /*
-         * MS
-         * I think what you are asking is: should we be validating things before sending to the database. 
-         * 
-         * The answer generally is "yes". A lot of that depends on your architecture but it's pretty rare to put all of your validation
-         * in the database. Mostly this is because the cost (in CPU cycles and bandwidth) is too high to push things all the way to the DB
-         * only to find out it is invalid.
-         * 
-         * So what you are doing here makes sense... and yes, you are correctly checking things inside the code block for the set{} 
-         * Some programmers would prefer to make actual validation classes and tap into those at the UI level. The way you are doing 
-         * it here you would probably need to throw an exception if validation failed. Philosophically, some programmers
-         * are very averse to using Exceptions for anything other than failures of the system. Many however see exceptions as
-         * a perfectly valid method of returning information from a method (or property set). 
-         * 
-         * Considering that Microsoft allows you to extend the Exception class to make your own, I have seen this used 
-         * effectively to pass information back.  For instance, here you could create your own exception and throw it in the code above.  
-         * 
-         * (I put an example in the code)
-         */
-        
     }
 
     /*

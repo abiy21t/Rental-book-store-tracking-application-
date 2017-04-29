@@ -27,5 +27,6 @@
         <Button x:Name="button" Content="Cancel" HorizontalAlignment="Left" Margin="14,514,0,0" VerticalAlignment="Top" Width="68" Height="30" Click="button_Click"/>
         <Label x:Name="label2" Content="Stock:" HorizontalAlignment="Left" Margin="41,371,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtStock" HorizontalAlignment="Left" Height="32" Margin="104,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" TabIndex="5"/>
+        <Label x:Name="label_isbnholder" Content="" HorizontalAlignment="Left" Margin="377,365,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
     </Grid>
 </Window>

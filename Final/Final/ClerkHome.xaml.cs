@@ -31,7 +31,9 @@ namespace Final
         private void logout_button_Click(object sender, RoutedEventArgs e)//logout
         {
             BookData bd = new BookData();
+            //clear the cart
             bd.ClearCart();
+            //return user to login page
             LoginPage lp = new LoginPage();
             lp.Show();
             this.Close();
@@ -39,8 +41,8 @@ namespace Final
 
         private void button1_Click(object sender, RoutedEventArgs e)//show search ISBN
         {
+            //display search bar
             showSearch("Enter an ISBN - 10 Number:");
-
         }
 
         private void button1_Click_1(object sender, RoutedEventArgs e)//display books button
@@ -71,7 +73,7 @@ namespace Final
 
         private void button_checkout_Click(object sender, RoutedEventArgs e)//proceed to checkout
         {
-            Checkout co = new Checkout();
+            Checkout co = new Checkout();//open checkout page
             co.Show();
             this.Close();
         }
@@ -107,7 +109,7 @@ namespace Final
             {
                 string[] books = bd.Search_Title(textBox_search.Text).ToArray();
                 FillListbox(books);
-            }else if (label_isbn.Content.ToString().Contains("Author"))
+            }else if (label_isbn.Content.ToString().Contains("Author"))//search by author
             {
                 string[] books = bd.Search_Author(textBox_search.Text).ToArray();
                 FillListbox(books);
@@ -137,13 +139,12 @@ namespace Final
             label_isbn.Content = type;
         }
 
-        private void button_author_Click(object sender, RoutedEventArgs e)
+        private void button_author_Click(object sender, RoutedEventArgs e)//search by author
         {
             showSearch("Enter an Author name:");
-
         }
 
-        private void FillListbox(string[] books)
+        private void FillListbox(string[] books)//fills the listbox with given list of books
         {
             listBox.Items.Clear();
             hideSearch();

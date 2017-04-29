@@ -26,6 +26,7 @@ namespace Final
 
         private void button_Click(object sender, RoutedEventArgs e)//cancel button
         {
+            //return user to admin homepage
             AdminHome ah = new AdminHome();
             ah.Show();
             this.Close();
@@ -37,22 +38,21 @@ namespace Final
             long num = 0;
             string temp = "";
             User us = new User();
+            //fills user class with data
             us.Firstname = textBox_fname.Text;
             us.Lastname = textBox_lname.Text;
             us.Username = textBox_user.Text;
             us.Password = passwordBox.Password;
             us.Email = textBox_email.Text;
-            if (textBox_phone.Text == "")
+            if (textBox_phone.Text == "")//makes sure a phone number has been entered
             {
                 okay = false;
                 MessageBox.Show("Phone number field required!");
             }
             else
             {
-                temp = textBox_phone.Text.Replace("-", "").Replace("(", "").Replace(")", "");
-                okay = long.TryParse(temp, out num);
-                //us.PhoneNumber = Convert.ToInt64(adminphone.Text);
-
+                temp = textBox_phone.Text.Replace("-", "").Replace("(", "").Replace(")", "");//removes special characters from phone number
+                okay = long.TryParse(temp, out num);//checks phone number is valid
                 if (okay)
                 {
                     us.PhoneNumber = num;
