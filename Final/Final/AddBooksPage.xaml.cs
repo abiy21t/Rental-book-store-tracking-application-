@@ -50,6 +50,10 @@ namespace Final
             Boolean okay = book.ISBN_Cheker(txtIsbn.Text);//check isbn is valid
             Boolean testPrice = Double.TryParse(txtPrice.Text, out price);//check price is valid
             Boolean testStock = Int32.TryParse(txtStock.Text, out stock);//check stock is a valid number
+            if (okay==false)
+            {
+                MessageBox.Show("Invalid ISBN. Please enter a valid 10 digit ISBN-10 number.");
+            }
             if (txtTitle.Text != "" && txtAuthor.Text != "" && txtPrice.Text != "" && txtStock.Text != "" && txtIsbn.Text != "")//make sure no fields are empty
             {
                 string title, author;

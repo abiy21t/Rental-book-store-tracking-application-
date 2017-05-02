@@ -80,7 +80,7 @@ namespace Final
                     MessageBox.Show("ISBN required!");
                 }
                 bool isbnchecker = ISBN_Cheker(value);//check the given isbn is valid
-                if (isbnchecker)
+                if (isbnchecker==true)
                 {
                     _ISBN = value;
                 }
@@ -116,6 +116,7 @@ namespace Final
         public Boolean ADD_Book(string title,string author,string edition,double price,string isbn, int inCart, int stock)//adds book to database
         {
             Boolean okay = false;
+
             try
             {  
                 using (var connection = conn.con)

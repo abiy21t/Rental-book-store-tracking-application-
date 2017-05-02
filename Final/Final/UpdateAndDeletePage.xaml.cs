@@ -64,16 +64,17 @@ namespace Final
             Book se = new Book();
             if (txtTitle.Text != "" && txtAuthor.Text != "" && !label_isbnholder.Content.Equals(""))//makes sure a book has been searched
             {
-                bool result = se.Delete_Book(searchtxt.Text);
-                if (result == true)
-                {
-                    AdminHome ah = new AdminHome();
-                    ah.Show();
-                    this.Close();
-                }
+                
             }else
             {
                 MessageBox.Show("Make sure this is the right book before deleting!\nDon't remove book information before deleting.");
+            }
+            bool result = se.Delete_Book(searchtxt.Text);
+            if (result == true)
+            {
+                AdminHome ah = new AdminHome();
+                ah.Show();
+                this.Close();
             }
         }
 
